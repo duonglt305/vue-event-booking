@@ -1,0 +1,519 @@
+/*================ Normal desktop :992px.==================== */
+
+@media (min-width: 992px) and (max-width: 1169px) {
+	.flip-clock-wrapper {
+		width: 70%
+	}
+	.single-blog {
+		width: 100%
+	}
+}
+
+
+/*================ Tablet desktop :768px.==================*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.navbar-collapse {
+		background-color: #fff;
+		text-align: center;
+	}
+	nav.navbar .nav-item .nav-link:before {
+		display: none
+	}
+	nav.navbar .nav-item:first-child {
+		padding-left: 13px;
+		margin-top: 15px
+	}
+	nav.navbar .nav-item:last-child {
+		padding-right: 13px;
+		margin-bottom: 15px
+	}
+	nav.navbar .nav-item .nav-link {
+		padding: 8px 10px
+	}
+	nav.sticky-top .nav-item .nav-link {
+		color: #111 !important
+	}
+	.navbar-toggler span {
+		font-size: 24px;
+		color: #fff;
+		-webkit-transition: all 0.4s ease 0s;
+		transition: all 0.4s ease 0s
+	}
+	#navbarCollapse a.nav-link {
+		color: #111
+	}
+	nav.sticky-top .navbar-toggler span {
+		color: #e1137b
+	}
+	.logo img {
+		width: 70%;
+	}
+	.navbar-nav.get_tickets {
+		display: none
+	}
+	.banner-welcome {
+		width: 100%
+	}
+	.banner-welcome h2 {
+		font-size: 55px
+	}
+	.about-box h4 {
+		font-size: 18px
+	}
+	.about-box h2 {
+		font-size: 30px;
+		line-height: 45px
+	}
+	.about-box {
+		width: 100%
+	}
+	.flip-clock-wrapper {
+		width: 90%;
+        display: none
+	}
+    .countdown-box{
+        padding-top: 60px
+    }
+	.countdown-box form {
+		width: 80%;
+        margin: 0 auto
+	}
+	.attend-left {
+		text-align: center;
+		margin-bottom: 50px;
+	}
+	.attend-left h4,
+	.site-heading h4 {
+		font-size: 18px
+	}
+	.attend-left h2,
+	.site-heading h2 {
+		font-size: 30px;
+		line-height: 45px
+	}
+	.site-heading {
+		width: 90%
+	}
+	.offer-tabs {
+		width: 100%
+	}
+	.registration-box {
+		width: 100%
+	}
+	.sponsor-box li {
+		width: 20%
+	}
+	.single-price-box {
+		width: 70%;
+		margin: 30px auto 0
+	}
+	.single-blog {
+		width: 70%;
+		margin: 30px auto 0
+	}
+	.contact-box {
+		width: 100%
+	}
+}
+
+
+/*================== small mobile :320px. ===================*/
+
+@media (max-width: 767px) {
+	.navbar-collapse {
+		background-color: #fff;
+		text-align: center;
+	}
+	nav.navbar .nav-item .nav-link:before {
+		display: none
+	}
+	nav.navbar .nav-item:first-child {
+		padding-left: 13px;
+		margin-top: 15px
+	}
+	nav.navbar .nav-item:last-child {
+		padding-right: 13px;
+		margin-bottom: 15px
+	}
+	nav.navbar .nav-item .nav-link {
+		padding: 8px 10px
+	}
+	nav.sticky-top .nav-item .nav-link {
+		color: #111 !important
+	}
+	.navbar-toggler span {
+		font-size: 24px;
+		color: #fff;
+		-webkit-transition: all 0.4s ease 0s;
+		transition: all 0.4s ease 0s
+	}
+	#navbarCollapse a.nav-link {
+		color: #111
+	}
+	nav.sticky-top .navbar-toggler span {
+		color: #e1137b
+	}
+	.logo img {
+		width: 70%;
+	}
+	.navbar-nav.get_tickets {
+		display: none
+	}
+	.banner-welcome {
+		width: 100%;
+		text-align: center
+	}
+	.banner-welcome h3 {
+		letter-spacing: 2px;
+		font-size: 15px
+	}
+	.banner-welcome h2 {
+		letter-spacing: 2px;
+		font-size: 30px;
+		line-height: 40px
+	}
+	.banner-welcome p {
+		font-size: 17px
+	}
+	.about-box {
+		width: 100%
+	}
+	.about-box h4 {
+		font-size: 18px
+	}
+	.about-box h2 {
+		font-size: 26px;
+		line-height: 40px
+	}
+	.about-box p {
+		font-size: 15px
+	}
+	.flip-clock-wrapper {
+		width: 90%;
+        display: none
+	}
+    .countdown-box{
+        padding-top: 60px
+    }
+	.flip-clock-wrapper ul {
+		width: 45px;
+		line-height: 60px;
+		height: 60px
+	}
+	.flip-clock-wrapper ul li {
+		line-height: 60px
+	}
+	.flip-clock-wrapper ul li a div div.inn {
+		font-size: 35px
+	}
+	.flip-clock-wrapper ul li a div {
+		font-size: 30px
+	}
+	.flip-clock-dot.bottom {
+		bottom: 40px
+	}
+	.flip-clock-dot.top {
+		top: 20px
+	}
+	.flip-clock-divider {
+		width: 15px;
+		height: 90px
+	}
+	.flip-clock-divider .flip-clock-label {
+		position: absolute;
+		top: -20px;
+		right: -80px;
+		color: #fff;
+		text-shadow: none;
+		letter-spacing: 1px;
+		font-size: 15px;
+		font-weight: 600;
+	}
+	.minutes .flip-clock-dot.top {
+		display: none;
+	}
+	.minutes .flip-clock-dot.bottom {
+		display: none;
+	}
+	.flip-clock-divider.minutes .flip-clock-label {
+		right: 155px;
+		top: 70px;
+	}
+	.flip-clock-divider .flip-clock-label {
+		letter-spacing: 1px;
+		font-size: 15px;
+		top: -20px
+	}
+	.countdown-box form {
+		width: 90%;
+		margin: 0px auto 0
+	}
+	.attend-left h4 {
+		font-size: 18px
+	}
+	.attend-left h2 {
+		font-size: 26px;
+		line-height: 40px
+	}
+	.flip-clock-divider.seconds .flip-clock-label {
+		right: -85px;
+	}
+	.attend-left {
+		text-align: center;
+		margin-bottom: 50px
+	}
+	.attend-right:before {
+		display: none
+	}
+    .evlis-why-attend-area{
+        padding-bottom: 60px
+    }
+	.attend-right:after {
+		display: none
+	}
+	.single-attend-box {
+		margin-top: 30px;
+		padding: 0
+	}
+	.site-heading {
+		width: 100%
+	}
+	.site-heading h4 {
+		font-size: 18px
+	}
+	.site-heading h2 {
+		font-size: 28px;
+		line-height: 40px
+	}
+	.promo-box h2 {
+		font-size: 30px
+	}
+	.promo-box p {
+		font-size: 18px
+	}
+	#offerTab li.nav-item {
+		margin: 5px;
+		display: block !important
+	}
+	.offer-tabs {
+		width: 100%
+	}
+	.schedule-details h3 {
+		font-size: 20px;
+		line-height: 30px
+	}
+	.registration-box h3 {
+		font-size: 30px
+	}
+	.registration-box {
+		width: 100%
+	}
+	.registration-box form p {
+		margin-top: 10px
+	}
+	.sponsor-box li {
+		width: auto
+	}
+}
+
+
+/* ======================Large Mobile :480px.================== */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.navbar-collapse {
+		background-color: #fff;
+		text-align: center;
+	}
+	nav.navbar .nav-item .nav-link:before {
+		display: none
+	}
+	nav.navbar .nav-item:first-child {
+		padding-left: 13px;
+		margin-top: 15px
+	}
+	nav.navbar .nav-item:last-child {
+		padding-right: 13px;
+		margin-bottom: 15px
+	}
+	nav.navbar .nav-item .nav-link {
+		padding: 8px 10px
+	}
+	nav.sticky-top .nav-item .nav-link {
+		color: #111 !important
+	}
+	.navbar-toggler span {
+		font-size: 24px;
+		color: #fff;
+		-webkit-transition: all 0.4s ease 0s;
+		transition: all 0.4s ease 0s
+	}
+	#navbarCollapse a.nav-link {
+		color: #111
+	}
+	nav.sticky-top .navbar-toggler span {
+		color: #e1137b
+	}
+	.logo img {
+		width: 70%;
+	}
+	.navbar-nav.get_tickets {
+		display: none
+	}
+	.banner-welcome {
+		width: 100%;
+		text-align: center
+	}
+	.banner-welcome h3 {
+		letter-spacing: 2px;
+		font-size: 15px
+	}
+	.banner-welcome h2 {
+		letter-spacing: 2px;
+		font-size: 30px;
+		line-height: 40px
+	}
+	.banner-welcome p {
+		font-size: 17px
+	}
+	.about-box {
+		width: 100%
+	}
+	.about-box h4 {
+		font-size: 18px
+	}
+	.about-box h2 {
+		font-size: 26px;
+		line-height: 40px
+	}
+	.about-box p {
+		font-size: 15px
+	}
+	.flip-clock-wrapper {
+		width: 91%;
+        display: none
+	}
+    .countdown-box{
+        padding-top: 60px
+    }
+	.flip-clock-wrapper ul {
+		width: 40px;
+		line-height: 55px;
+		height: 55px
+	}
+	.flip-clock-wrapper ul li {
+		line-height: 55px
+	}
+	.flip-clock-wrapper ul li a div div.inn {
+		font-size: 30px
+	}
+	.flip-clock-wrapper ul li a div {
+		font-size: 25px
+	}
+	.flip-clock-dot.bottom {
+		bottom: 35px
+	}
+	.flip-clock-dot.top {
+		top: 15px
+	}
+	.flip-clock-divider {
+		width: 15px;
+		height: 90px
+	}
+	.flip-clock-divider .flip-clock-label {
+		position: absolute;
+		top: -20px;
+		right: -80px;
+		color: #fff;
+		text-shadow: none;
+		letter-spacing: 1px;
+		font-size: 15px;
+		font-weight: 600;
+	}
+	.minutes .flip-clock-dot.top {
+		display: block;
+	}
+	.minutes .flip-clock-dot.bottom {
+		display: block;
+	}
+	.flip-clock-divider.minutes .flip-clock-label {
+		right: -85px;
+		top: -20px;
+	}
+	.flip-clock-divider .flip-clock-label {
+		letter-spacing: 1px;
+		font-size: 15px;
+		top: -20px
+	}
+	.countdown-box form {
+		width: 90%;
+		margin: 0px auto 0
+	}
+    .evlis-why-attend-area{
+        padding-bottom: 60px
+    }
+	.attend-left h4 {
+		font-size: 18px
+	}
+	.attend-left h2 {
+		font-size: 26px;
+		line-height: 40px
+	}
+	.flip-clock-divider.seconds .flip-clock-label {
+		right: -85px;
+	}
+	.attend-left {
+		text-align: center;
+		margin-bottom: 50px
+	}
+	.attend-right:before {
+		display: none
+	}
+	.attend-right:after {
+		display: none
+	}
+	.single-attend-box {
+		margin-top: 30px;
+		padding: 0
+	}
+	.site-heading {
+		width: 100%
+	}
+	.site-heading h4 {
+		font-size: 18px
+	}
+	.site-heading h2 {
+		font-size: 28px;
+		line-height: 40px
+	}
+	.promo-box h2 {
+		font-size: 30px
+	}
+	.promo-box p {
+		font-size: 18px
+	}
+	#offerTab li.nav-item {
+		margin: 5px;
+		display: block !important
+	}
+	.offer-tabs {
+		width: 100%
+	}
+	.schedule-details h3 {
+		font-size: 20px;
+		line-height: 30px
+	}
+	.registration-box h3 {
+		font-size: 30px
+	}
+	.registration-box {
+		width: 100%
+	}
+	.registration-box form p {
+		margin-top: 10px
+	}
+	.sponsor-box li {
+		width: auto
+	}
+}
+

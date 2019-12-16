@@ -1,0 +1,1463 @@
+/*
+*******************************************
+*******************************************
+
+Template Name: Evlis
+Template URL: https://themescare.com/demos/evlis-view
+Description:
+Author: Themescare
+Author URL: https://themeforest.net/user/themescare
+Version: 1.0
+
+* This file contains the styling for the actual theme, this
+is the file you need to edit to change the look of the
+theme.
+
+This files contents are outlined below >>>>
+
+*** SEARCH EACH SECTION AS IT COMMENTS, YOU WILL GET THE RIGHT SECTION.
+
+*******************************************
+*******************************************
+
+==== CSS INDEX
+
+01 - IMPORTED CSS
+02 - DEFAULT CSS
+03 - NAVBAR CSS
+04 - WELCOME CSS
+05 - ABOUT AREA CSS
+06 - COUNTDOWN AREA CSS
+07 - ATTEND AREA CSS
+08 - VENUE AREA CSS
+09 - PROMO AREA CSS
+10 - SCHEDULE AREA CSS
+11 - SPEAKERS AREA CSS
+12 - REGISTRATION AREA CSS
+13 - SPONSOR AREA CSS
+14 - PRICING AREA CSS
+15 - BLOG AREA CSS
+16 - CONTACT AREA CSS
+17 - FOOTER AREA CSS
+
+
+*/
+
+/*================================================
+01 - IMPORTED CSS
+==================================================*/
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap');
+
+/*================================================
+02 - DEFAULT CSS
+==================================================*/
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-size: 15px;
+    color: #7f8897;
+    line-height: 28px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto
+}
+
+p {
+    margin: 0
+}
+
+.no-pad-left {
+    padding-left: 0
+}
+
+.no-pad-right {
+    padding-right: 0
+}
+
+.no-pad-all {
+    padding: 0
+}
+
+.fix {
+    overflow: hidden
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    color: #6b739c
+}
+
+a:focus {
+    text-decoration: none;
+    outline: medium none;
+    color: inherit
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: none;
+    color: inherit
+}
+
+input:focus,
+textarea:focus,
+button:focus,
+select:focus {
+    outline: medium none
+}
+
+:-moz-placeholder {
+    color: #7c8a97;
+    text-transform: capitalize;
+}
+
+::-moz-placeholder {
+    color: #7c8a97;
+    text-transform: capitalize;
+}
+
+:-ms-input-placeholder {
+    color: #7c8a97;
+    text-transform: capitalize;
+}
+
+::-webkit-input-placeholder {
+    color: #7c8a97;
+    text-transform: capitalize;
+}
+
+:-ms-select-placeholder {
+    color: #7c8a97;
+    text-transform: capitalize;
+}
+
+::-webkit-select-placeholder {
+    color: #7c8a97;
+    text-transform: capitalize;
+}
+
+:-ms-textarea-placeholder {
+    color: #7c8a97;
+    text-transform: capitalize;
+}
+
+::-webkit-textarea-placeholder {
+    color: #7c8a97;
+    text-transform: capitalize;
+}
+
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.evlis-btn {
+    background: #e1137b none repeat scroll 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 18px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block
+}
+
+.evlis-btn:hover {
+    color: #fff;
+    background: #b90e64 none repeat scroll 0 0;
+}
+
+.site-heading {
+    margin-bottom: 30px;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center
+}
+
+.site-heading h4 {
+    font-family: 'Roboto', sans-serif;
+    color: #ff8a01;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.site-heading h2 {
+    text-transform: capitalize;
+    font-size: 40px;
+    color: #111;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    margin-bottom: 15px;
+    line-height: 50px;
+}
+
+.section_100 {
+    padding: 100px 0;
+}
+
+.section_70 {
+    padding: 70px 0;
+}
+
+.section_50 {
+    padding: 50px 0;
+}
+
+.section_15 {
+    padding: 15px 0
+}
+
+.pad-right {
+    padding-right: 0
+}
+
+.section_t_100 {
+    padding-top: 100px
+}
+
+.section_b_70 {
+    padding-bottom: 70px
+}
+
+.section_70 {
+    padding: 70px 0
+}
+
+.section_b_80 {
+    padding-bottom: 80px
+}
+
+
+/*================================================
+03 - NAVBAR CSS
+==================================================*/
+
+nav.navbar {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+nav.navbar .navbar-toggler {
+    border: 0;
+}
+
+nav.navbar .navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+nav.navbar .nav-item {
+    font-size: 13px;
+    font-weight: 400;
+    padding-right: 12px;
+    padding-left: 12px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+nav.navbar .nav-item:first-child {
+    padding-left: 0;
+}
+
+nav.navbar .nav-item:last-child {
+    padding-right: 0;
+}
+
+nav.navbar .nav-item .nav-link {
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+    padding: 0;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+    text-transform: capitalize;
+    font-size: 15px;
+}
+
+nav.navbar .nav-item .nav-link.active {
+    color: #e1137b !important
+}
+
+nav.sticky-top {
+    position: sticky;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    background: #fff none repeat scroll 0 0;
+    box-shadow: 0px 0px 18px 1px rgba(0, 0, 0, 0.1);
+}
+
+nav.sticky-top .logo {
+    display: none
+}
+
+nav.sticky-top .logo.HideScroll {
+    display: block
+}
+
+.HideScroll {
+    display: none
+}
+
+nav.sticky-top .logo:focus,
+nav.sticky-top .logo:hover {
+    color: #000;
+}
+
+nav.sticky-top .navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+nav.sticky-top .nav-item {
+    color: #000;
+}
+
+nav.sticky-top .nav-item .nav-link {
+    color: #111 !important;
+}
+
+nav.sticky-top .nav-item .nav-link:before {
+    background-color: #fff;
+}
+
+.navbar-nav.get_tickets {
+    margin-left: 30px;
+}
+
+.navbar-nav.get_tickets a {
+    background: #e1137b none repeat scroll 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 13px 18px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    color: #fff;
+}
+
+
+/*================================================
+04 - WELCOME CSS
+==================================================*/
+
+.evlis-home-area {
+    background: url(../img/welcome.jpg) no-repeat fixed center center/cover;
+    position: relative;
+    z-index: 1;
+    padding: 100px 0;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.evlis-home-area:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    z-index: -1;
+}
+
+.banner-welcome {
+    width: 70%;
+    padding-top: 70px
+}
+
+.banner-welcome h3 {
+    color: #fff;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.banner-welcome h2 {
+    color: #fff;
+    letter-spacing: 4px;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 70px;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 20px
+}
+
+.banner-welcome p {
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.banner-action a.evlis-btn {
+    margin: 20px 5px 0 5px;
+}
+
+
+/*================================================
+05 - ABOUT AREA CSS
+==================================================*/
+
+.evlis-about-area {
+    position: relative
+}
+
+.about_bg {
+    position: absolute;
+    width: 10%;
+    left: 5%;
+    top: 36%;
+    opacity: 0.30;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+}
+
+.about-box {
+    text-align: center;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.about-box h4 {
+    font-family: 'Roboto', sans-serif;
+    color: #ff8a01;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.about-box h2 {
+    text-transform: capitalize;
+    line-height: 48px;
+    font-size: 35px;
+    color: #111;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.about-box p {
+    font-size: 16px;
+    color: #333;
+    letter-spacing: 0.4px;
+    letter-spacing: .025rem;
+}
+
+.about-box a.evlis-btn {
+    margin-top: 30px
+}
+
+
+/*================================================
+06 - COUNTDOWN AREA CSS
+==================================================*/
+
+.countdown-box {
+    background: url(../img/promo.jpg) no-repeat scroll 0 0/cover;
+    position: relative;
+    text-align: center;
+    border-radius: 5px;
+    z-index: 1;
+    padding-bottom: 60px;
+    padding-top: 40px;
+}
+
+.countdown-box:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: -webkit-linear-gradient(45deg, rgba(255, 138, 1, 1) 0%, rgba(225, 19, 123, 1) 100%);
+    background: linear-gradient(45deg, rgba(255, 138, 1, 1) 0%, rgba(225, 19, 123, 1) 100%);
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"
+}
+
+.flip-clock-wrapper {
+    width: 56%;
+    margin: 50px auto 0;
+    display: block
+}
+
+.flip-clock-divider .flip-clock-label {
+    position: absolute;
+    top: -30px;
+    right: -96px;
+    color: #fff;
+    text-shadow: none;
+    letter-spacing: 3px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.flip-clock-divider.minutes .flip-clock-label {
+    right: -105px;
+}
+
+.flip-clock-divider.seconds .flip-clock-label {
+    right: -110px;
+}
+
+.flip-clock-wrapper .flip {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.74);
+}
+
+.flip-clock-wrapper ul {
+    background: #fff
+}
+
+.flip-clock-wrapper ul li a div div.inn {
+    text-shadow: 0 1px 2px #fff;
+    background-color: #fff;
+    color: #080829
+}
+
+.flip-clock-dot {
+    background: #fff none repeat scroll 0 0
+}
+
+.countdown-box form {
+    width: 45%;
+    margin: 50px auto 0;
+    position: relative;
+    height: 45px;
+    background: #fff;
+    border-radius: 30px
+}
+
+.countdown-box form input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: medium none;
+    background: transparent;
+    padding: 5px 100px 5px 20px;
+    border-radius: 30px 0 0 30px
+}
+
+.countdown-box form button {
+    position: absolute;
+    right: 0;
+    width: auto;
+    height: 100%;
+    border: medium none;
+    cursor: pointer;
+    padding: 8px 20px;
+    border-radius: 0 30px 30px 0;
+    color: #ff8a01;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 3px;
+    background: rgba(255, 7, 99, 0.06);
+}
+
+
+/*================================================
+07 - ATTEND AREA CSS
+==================================================*/
+
+.evlis-why-attend-area {
+    position: relative
+}
+
+.attend-left h2 {
+    text-transform: capitalize;
+    font-size: 40px;
+    color: #111;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 50px;
+}
+
+.attend-left p {
+    letter-spacing: 0.4px;
+    letter-spacing: .025rem;
+    font-size: 16px;
+    color: #333;
+}
+
+.attend-left a.evlis-btn {
+    margin-top: 30px
+}
+
+.attend-left h4 {
+    font-family: 'Roboto', sans-serif;
+    color: #ff8a01;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.attend-image {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+}
+
+.attend-image img {
+    width: 100%;
+    height: 100%
+}
+
+.attend-text h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #111;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s
+}
+
+.attend-text h3:hover {
+    color: #e1137b
+}
+
+.attend-right {
+    position: relative;
+}
+
+.attend-right:before {
+    position: absolute;
+    content: "";
+    top: 49%;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: #f0f0ff;
+}
+
+.attend-right:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 49%;
+    width: 1px;
+    background: #f0f0ff;
+    height: 100%;
+}
+
+.single-attend-box {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.attend-bg,
+.about_bg,
+.schedule_bg {
+    animation-name: float-bob;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-name: float-bob;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: float-bob;
+    -moz-animation-duration: 1.5s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: float-bob;
+    -ms-animation-duration: 1.5s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    -o-animation-name: float-bob;
+    -o-animation-duration: 1.5s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: linear;
+}
+
+
+/* Bob */
+
+@-webkit-keyframes float-bob {
+    0% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+    50% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    100% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes float-bob {
+    0% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+    50% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    100% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+}
+
+.attend-bg {
+    position: absolute;
+    top: 130px;
+    left: -180px;
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+}
+
+
+/*================================================
+09 - PROMO AREA CSS
+==================================================*/
+
+.evlis-promo-area {
+    background: url(../img/promo.jpg) no-repeat fixed 0 0/cover;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+.evlis-promo-area:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: -webkit-linear-gradient(45deg, rgba(255, 138, 1, 1) 0%, rgba(225, 19, 123, 1) 100%);
+    background: linear-gradient(45deg, rgba(255, 138, 1, 1) 0%, rgba(225, 19, 123, 1) 100%);
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
+
+.promo-box p {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.promo-box h2 {
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 40px;
+    display: inline-block;
+    border-top: 2px solid #fff;
+}
+
+
+/*================================================
+10 - SCHEDULE AREA CSS
+==================================================*/
+
+.evlis-schedule-area {
+    background: #EEEEF4 none repeat scroll 0 0;
+    position: relative
+}
+
+.schedule_bg {
+    position: absolute;
+    right: 0;
+    bottom: 20%;
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+}
+
+.offer-tabs {
+    width: 75%;
+    margin: 30px auto 0;
+}
+
+#offerTab {
+    float: none;
+    text-align: center;
+    display: block;
+    border-bottom: 0px solid #dee2e6 !important
+}
+
+#offerTab li.nav-item {
+    display: inline-block !important;
+    margin: 0 5px;
+}
+
+#offerTab li a.nav-link.active {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 5px;
+    border: medium none;
+    padding: 8px 18px;
+    line-height: 25px;
+    background: #e1137b none repeat scroll 0 0;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 3px;
+}
+
+#offerTab li a.nav-link {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 5px;
+    border: 1px solid #e1137b;
+    padding: 8px 18px;
+    line-height: 25px;
+    font-weight: 700;
+    color: #111;
+    border-radius: 3px;
+}
+
+#offerTab li a.nav-link.active {
+    border: medium none
+}
+
+#offerTab li a.nav-link.active span {
+    border-top: 1px solid #fff
+}
+
+#offerTab li a.nav-link span {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 3px;
+    border-top: 1px solid #e1137b
+}
+
+.single-schedule-item {
+    margin-top: 30px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(14, 16, 48, .05);
+    background: #fff none repeat scroll 0 0;
+}
+
+.schedule-time h3 {
+    width: auto;
+    display: inline-block;
+    padding: 8px 18px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    background: #ff8a01 none repeat scroll 0 0;
+    margin-bottom: 15px;
+}
+
+.schedule-details h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #111;
+    text-transform: capitalize;
+    font-weight: 500;
+    display: inline-block;
+    font-size: 24px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.schedule-details h3:hover {
+    color: #e1137b
+}
+
+
+/*================================================
+11 - SPEAKERS AREA CSS
+==================================================*/
+
+.single-speakers {
+    margin-top: 30px;
+}
+
+.speakers-image {
+    position: relative;
+    padding: 15px;
+    -webkit-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s
+}
+
+.speakers-image:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background: -webkit-linear-gradient(45deg, rgb(255, 138, 1) 0%, rgb(225, 19, 123) 100%);
+    background: linear-gradient(45deg, rgb(255, 138, 1) 0%, rgb(225, 19, 123) 100%);
+    z-index: -1;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
+
+.speakers-image img {
+    width: 100%;
+    -webkit-transform: rotate(3deg);
+    transform: rotate(3deg);
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s
+}
+
+.single-speakers:hover .speakers-image {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.single-speakers:hover .speakers-image img {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.speakers-info {
+    padding-top: 20px;
+}
+
+.speakers-info h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #111;
+    text-transform: capitalize;
+    font-weight: 500;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.speakers-info h3:hover {
+    color: #e1137b
+}
+
+.speakers-info p {
+    font-family: 'Roboto', sans-serif;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+}
+
+
+/*================================================
+12 - REGISTRATION AREA CSS
+==================================================*/
+
+.evlis-registration-area {
+    background: -webkit-linear-gradient(45deg, rgb(255, 138, 1) 0%, rgb(225, 19, 123) 100%);
+    background: linear-gradient(45deg, rgb(255, 138, 1) 0%, rgb(225, 19, 123) 100%);
+}
+
+.registration-box {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.registration-box > p {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.registration-box h3 {
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 40px;
+    display: inline-block;
+    border-top: 2px solid #fff;
+}
+
+.registration-box h3 span {
+    display: block
+}
+
+.registration-box form {
+    margin-top: 30px;
+}
+
+.registration-box form input {
+    width: 100%;
+    padding: 10px 15px;
+    background: #fff none repeat scroll 0 0;
+    border: medium none;
+}
+
+.registration-box form select {
+    width: 100%;
+    padding: 10px 15px;
+    background: #fff none repeat scroll 0 0;
+    border: medium none;
+}
+
+.registration-box form button {
+    background: transparent;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 18px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    border: 2px solid #fff;
+    margin-top: 30px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.registration-box form button:hover {
+    background: #fff none repeat scroll 0 0;
+    color: #e1137b
+}
+
+.nice-select {
+    width: 100%;
+    border-radius: 0;
+    height: 48px;
+    line-height: 48px;
+}
+
+.nice-select .list {
+    width: 100%;
+    border-radius: 0;
+    margin-top: 0;
+}
+
+
+/*================================================
+13 - SPONSOR AREA CSS
+==================================================*/
+
+.sponsor-box-item {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.sponsor-box li {
+    width: 21%;
+    display: inline-block;
+    padding: 20px;
+    margin: 30px 15px 0px;
+    background: #f7f7f7 none repeat scroll 0 0;
+}
+
+.sponsor-box li img {
+    width: 140px;
+}
+
+.sponsor-heading h4 {
+    font-family: 'Roboto', sans-serif;
+    color: #111;
+    text-transform: capitalize;
+    font-weight: 500;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.section-action {
+    text-align: center
+}
+
+.section-action a.evlis-btn {
+    margin-top: 50px;
+}
+
+
+/*================================================
+14 - PRICING AREA CSS
+==================================================*/
+
+.evlis-pricing-area {
+    background: url(../img/promo.jpg) no-repeat fixed 0 0/cover;
+    position: relative;
+    padding-top: 40px;
+    z-index: 1
+}
+
+.evlis-pricing-area:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #111;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
+
+.single-price-box {
+    margin-top: 30px;
+    background: #fff none repeat scroll 0 0;
+    box-shadow: 0 4px 10px rgba(14, 16, 48, .05);
+    border-radius: 5px;
+}
+
+.price-head {
+    padding: 30px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.price-head h4 {
+    font-family: 'Roboto', sans-serif;
+    color: #111;
+    text-transform: capitalize;
+    font-weight: 500;
+    display: block;
+    font-size: 16px;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.price-head h2 {
+    font-family: 'Roboto', sans-serif;
+    color: #111;
+    text-transform: capitalize;
+    font-weight: 500;
+    display: block;
+    font-size: 33px;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    margin-top: 20px;
+}
+
+.price-head h2 span {
+    font-size: 14px;
+}
+
+.price-body {
+    padding: 30px;
+}
+
+.price-body li {
+    margin: 15px 0;
+}
+
+.price-body li i {
+    margin-right: 10px;
+    color: #ff8a01;
+}
+
+.price-action {
+    text-align: center;
+}
+
+.price-action a.evlis-btn {
+    margin-top: 20px;
+}
+
+.single-price-box.active .price-head {
+    background: -webkit-linear-gradient(45deg, rgb(255, 138, 1) 0%, rgb(225, 19, 123) 100%);
+    background: linear-gradient(45deg, rgb(255, 138, 1) 0%, rgb(225, 19, 123) 100%);
+}
+
+.single-price-box.active .price-head h4 {
+    color: #fff
+}
+
+.single-price-box.active .price-head h2 {
+    color: #fff
+}
+
+.single-price-box.active .price-head h2 span {
+    color: #fff
+}
+
+
+/*================================================
+15 - BLOG AREA CSS
+==================================================*/
+
+.evlis-blog-area {
+    background: #eeeef4 none repeat scroll 0 0;
+}
+
+.single-blog {
+    margin-top: 30px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(14, 16, 48, .05);
+}
+
+.blog-image {
+    position: relative;
+}
+
+.blog-image img {
+    width: 100%
+}
+
+.blog-image p {
+    position: absolute;
+    top: 15px;
+    width: auto;
+    left: 15px;
+    display: inline-block;
+    padding: 8px 15px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 2px;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 22px;
+}
+
+.blog-image p span {
+    display: block;
+    color: #fff;
+}
+
+.date-bg-1 {
+    background: #e1137b none repeat scroll 0 0;
+}
+
+.date-bg-2 {
+    background: #ff8a01 none repeat scroll 0 0;
+}
+
+.blog-text {
+    padding: 20px;
+}
+
+.blog-text a {
+    display: inline-block
+}
+
+.blog-text h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #111;
+    text-transform: capitalize;
+    font-weight: 500;
+    display: inline-block;
+    font-size: 19px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    line-height: 28px;
+}
+
+.blog-text h3:hover {
+    color: #e1137b
+}
+
+
+/*================================================
+16 - CONTACT AREA CSS
+==================================================*/
+
+.evlis-contact-area {
+    position: relative
+}
+
+.contact-box {
+    margin: 50px auto 0;
+    width: 85%;
+}
+
+.contact-box form p {
+    margin-top: 15px
+}
+
+.contact-box form p label {
+    display: block;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.contact-box label span {
+    color: #e1137b;
+}
+
+.contact-box input {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+}
+
+.contact-box textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    height: 110px;
+}
+
+.submit-form {
+    text-align: center
+}
+
+.submit-form button {
+    background: #e1137b none repeat scroll 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 18px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    border: medium none;
+    margin-top: 30px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.submit-form button i {
+    color: #fff;
+}
+
+.submit-form button:hover {
+    background: #b90e64 none repeat scroll 0 0
+}
+
+
+/*================================================
+17 - FOOTER AREA CSS
+==================================================*/
+
+.evlis-footer-area {
+    background: #eeeef4 none repeat scroll 0 0;
+    padding: 50px 0 40px 0px;
+}
+
+.footer-copyright p {
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 1px solid #ddd;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.footer-box {
+    text-align: center
+}
+
+.footer-box-right ul {
+    margin-top: 20px;
+    text-align: center
+}
+
+.footer-box-right ul li {
+    display: inline-block
+}
+
+.footer-box-right ul li a {
+    display: block;
+    color: #111;
+    padding: 5px 10px;
+}
+
+.footer-box-right ul li a:hover {
+    color: #ff8a01
+}
+
+
