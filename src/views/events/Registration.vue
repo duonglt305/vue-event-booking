@@ -157,7 +157,8 @@
     export default {
         name: "Registration",
         created() {
-            this.$store.dispatch('event/detail', this.$route.params);
+            if(!this.event.name)
+                this.$store.dispatch('event/detail', this.$route.params);
         },
         data() {
             return {

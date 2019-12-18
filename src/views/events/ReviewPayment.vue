@@ -3,7 +3,7 @@
         <b-card class="p-md-4">
             <div class="payment-header">
                 <div class="payment-info">
-                    <h4>{{ event.name }}</h4>
+                    <h4>{{ event.name ? event.name : '' }}</h4>
                     <p><i class="fa fa-map-marker"/> {{ registration.event.address }}</p>
                     <p><i class="fa fa-calendar"/> {{ eventDate }} {{ eventTime }}</p>
                 </div>
@@ -41,7 +41,7 @@
             <template v-slot:footer>
                 <div class="text-center text-md-right">
                     <b-button variant="primary" @click="confirmPayment" v-if="!paid">Confirm Payment</b-button>
-                    <b-button variant="danger" @click="$router.go(-1)">Cancel</b-button>
+                    <b-button variant="danger" @click="cancel">Cancel</b-button>
                 </div>
             </template>
         </b-card>
@@ -83,7 +83,8 @@
     export default {
         name: "ReviewPayment",
         created() {
-            this.$store.dispatch('event/paymentDetail', this.$route.params);
+            if (!this.registration.id)
+                this.$store.dispatch('event/paymentDetail', this.$route.params);
         },
         data() {
             return {}
@@ -110,7 +111,7 @@
                 return this.registration.sessions;
             },
             eventDate() {
-                return this.parseDate(this.event.date);
+                return this.event.date ? this.parseDate(this.event.date) : '';
             },
             eventTime() {
                 return this.parseTime(this.event.date);
@@ -121,9 +122,13 @@
                     total += current.cost;
                     return total;
                 }, 0) + this.ticket.cost;
-            }
+            },
         },
         methods: {
+
+            cancel() {
+                this.$router.push({name: 'MyRegistration'});
+            },
             confirmPayment() {
                 let {paymentId, PayerID} = this.$route.query;
                 let registration_id = this.registration.id;

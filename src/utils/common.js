@@ -10,7 +10,7 @@ export default {
      * @type string
      * @description api base url
      */
-    apiBaseUrl: 'http://dissertation.test/api/v1/',
+    apiBaseUrl: process.env.NODE_ENV === 'production' ? 'https://dissertation.duonglt.net/api/v1/' : 'http://dissertation.test/api/v1/',
 
     getReturnUrl(oSlug, eSlug) {
         return `${location.origin}/${oSlug}/${eSlug}/review`

@@ -21,19 +21,21 @@
                     <td>{{ item.total }}</td>
                     <td v-html="item.status"/>
                     <td>
-                        <a class="text-primary" v-if="!item.paid" href="" @click.prevent="executePayment(item.registration)">Pay</a>
-                        <a class="text-success" v-else href="" @click.prevent="detailPayment(item.registration)">Invoice</a>
+                        <a class="text-primary" v-if="!item.paid" href=""
+                           @click.prevent="executePayment(item.registration)">Pay</a>
+                        <a class="text-success" v-else href=""
+                           @click.prevent="detailPayment(item.registration)">Invoice</a>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <b-pagination-nav
-            :number-of-pages="registrationTotalPage"
-            base-url="?page="
-            class="d-flex justify-content-center justify-content-md-end"
-            use-router
-            v-model="currentPage">
+                :number-of-pages="registrationTotalPage"
+                base-url="?page="
+                class="d-flex justify-content-center justify-content-md-end"
+                use-router
+                v-model="currentPage">
         </b-pagination-nav>
     </b-card>
 </template>
@@ -46,7 +48,8 @@
         name: "MyRegistration",
         created() {
             let page = this.$route.query.page ? this.$route.query.page : 1;
-            this.$store.dispatch('event/myRegistrations', page);
+            if (!this.registrations.length)
+                this.$store.dispatch('event/myRegistrations', page);
         },
         data() {
             return {
@@ -56,6 +59,7 @@
         mixins: [currencyFormatMixin],
         computed: {
             ...mapState({
+                registration: ({event}) => event.registration,
                 registrations: state => state.event.registrations,
                 registrationTotalPage: state => state.event.registrationTotalPage,
             }),
@@ -107,7 +111,9 @@
                     }
                 });
             },
-            detailPayment({event}) {
+            detailPayment({event, id}) {
+                if (this.registration.id !== id)
+                    this.$store.commit('event/clearRegistration');
                 this.$router.push({
                     name: 'ReviewPayment',
                     params: {

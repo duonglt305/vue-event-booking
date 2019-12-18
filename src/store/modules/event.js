@@ -102,6 +102,7 @@ export default {
                     this._vm.$toastr.s(response.data.message);
                     commit('setPaymentSuccess', response.data.registration);
                     dispatch('loading/hide', null, {root: true});
+                    dispatch('myRegistrations');
                     router.push('');
                 },
                 error => {
@@ -195,6 +196,15 @@ export default {
         },
         clearArticle(state) {
             state.article = {};
+        },
+        selectArticle(state, article) {
+            state.article = article;
+        },
+        clearEventDetail(state) {
+            state.event = {};
+        },
+        clearRegistration(state) {
+            state.registration = {};
         }
     }
 }

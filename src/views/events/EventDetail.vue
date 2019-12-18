@@ -75,7 +75,8 @@
             Contact,
         },
         created() {
-            this.$store.dispatch('event/detail', this.$route.params);
+            if (!this.event.name)
+                this.$store.dispatch('event/detail', this.$route.params);
             window.scrollTo(0, 0);
         },
         mixins: [dateFormatMixin],

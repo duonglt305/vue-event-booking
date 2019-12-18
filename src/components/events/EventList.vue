@@ -29,7 +29,8 @@
             Event,
         },
         created() {
-            this.$store.dispatch('event/list');
+            if(!this.items.length)
+                this.$store.dispatch('event/list');
         },
         data() {
             return {

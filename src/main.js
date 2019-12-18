@@ -34,8 +34,8 @@ Vue.use(VuelidateErrorExtractor, {
 
 Vue.use(VueCarousel);
 
-Vue.config.productionTip = false;
-Vue.config.devtools = true;
+Vue.config.productionTip = true;
+Vue.config.devtools = false;
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

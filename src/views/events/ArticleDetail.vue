@@ -6,14 +6,11 @@
                     <h3 class="post__title">{{ article.title }}</h3>
                     <div class="post__meta">
                         <span class="post__created-at">
-                            <i class="fa fa-clock-o"/><a href="#"> {{ article.updated_at }}</a>
+                            <i class="fa fa-clock-o"/><a href="#"> {{ article.updated_at ? date :'' }}</a>
                         </span>
                     </div>
                 </header>
-                <div class="post__content" v-html="article.body">
-
-                </div>
-
+                <div class="post__content" v-html="article.body"></div>
             </article>
         </div>
     </main>
@@ -24,13 +21,21 @@
 
     export default {
         name: "ArticleDetail",
-        created() {
-            this.$store.dispatch('event/articleDetail', this.$route.params);
+        mounted() {
+            if(!this.article.title)
+                this.$store.dispatch('event/articleDetail', this.$route.params);
         },
         computed: {
             ...mapState({
                 article: ({event}) => event.article,
-            })
+            }),
+            date() {
+                return this.article ? new Intl.DateTimeFormat('en-US', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                }).format(new Date(Date.parse(this.article.updated_at))) : '';
+            }
         }
     }
 </script>

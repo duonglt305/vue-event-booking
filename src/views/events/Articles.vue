@@ -5,20 +5,18 @@
                 <b-col cols="12" lg="4" v-for="(article,index) in articles" :key="`article-${index}`">
                     <div class="single-blog">
                         <div class="blog-image">
-                            <router-link
-                                    :to="{ name: 'ArticleDetail', params:{...$route.params, aSlug: article.slug }}">
+                            <a href="" @click.prevent="resolveArticleDetail(article)">
                                 <img :src="article.thumbnail" alt="blog 1">
-                            </router-link>
+                            </a>
                             <p :class="dateClass(index)">
                                 {{ article.updated_at ? toDate2Digit(article.updated_at) : '' }}
                                 <span>{{ toMonthShort(article.updated_at)}}</span>
                             </p>
                         </div>
                         <div class="blog-text">
-                            <router-link
-                                    :to="{ name: 'ArticleDetail', params:{...$route.params, aSlug: article.slug }}">
+                            <a href="" @click.prevent="resolveArticleDetail(article)">
                                 <h3>{{ article.title }}</h3>
-                            </router-link>
+                            </a>
                         </div>
                     </div>
                 </b-col>
@@ -45,9 +43,8 @@
         name: "Articles",
         created() {
             if (!this.$route.params.oSlug || !this.$route.params.eSlug) this.$router.back();
-            this.$store.dispatch('event/articles', {
-                ...this.$route.params
-            });
+            if (!this.articles.length)
+                this.$store.dispatch('event/articles', this.$route.params);
         },
         computed: {
             ...mapState({
@@ -84,6 +81,10 @@
                     ...this.$route.params,
                     page,
                 });
+            },
+            resolveArticleDetail(article){
+                this.$store.commit('event/selectArticle',article);
+                this.$router.push({ name: 'ArticleDetail', params:{...this.$route.params, aSlug: article.slug }, props:{article}})
             },
         }
     }

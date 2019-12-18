@@ -5,15 +5,15 @@
             <p :class="dateClass">{{ date }}</p>
         </div>
         <div class="event-text">
-            <router-link :to="{name:'EventDetail', params:{oSlug :  event.organizer.slug, eSlug: event.slug}}">
+            <a href="" @click.prevent="resolveEventDetail">
                 <h3>{{ event.name }}</h3>
-            </router-link>
+            </a>
             <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mt-3">
                 <p class="organizer">{{ event.organizer.name }}</p>
-                <router-link class="registration-link mt-2 mt-md-0"
-                             :to="registrationLink">
+                <a href="" class="registration-link mt-2 mt-md-0"
+                   @click.prevent="resolveRegistration">
                     Register now
-                </router-link>
+                </a>
             </div>
         </div>
     </div>
@@ -36,6 +36,7 @@
         mixins: [dateFormatMixin],
         computed: {
             ...mapState({
+                currentEvent: ({event}) => event.event,
                 isLogged: ({auth}) => auth.status.isLogged,
             }),
             dateClass() {
@@ -44,8 +45,24 @@
             date() {
                 return this.parseDate(this.event.date);
             },
-            registrationLink() {
-                return this.isLogged ? {
+
+        },
+        methods: {
+            resolveEventDetail() {
+                if (this.currentEvent.slug !== this.event.slug)
+                    this.$store.commit('event/clearEventDetail');
+                this.$router.push({
+                    name: 'EventDetail',
+                    params: {
+                        oSlug: this.event.organizer.slug,
+                        eSlug: this.event.slug,
+                    }
+                });
+            },
+            resolveRegistration() {
+                if (this.currentEvent.slug !== this.event.slug)
+                    this.$store.commit('event/clearEventDetail');
+                return this.$router.push(this.isLogged ? {
                     name: 'Registration',
                     params: {
                         oSlug: this.event.organizer.slug,
@@ -53,7 +70,7 @@
                     }
                 } : {
                     name: 'Login',
-                }
+                })
             }
         }
     }

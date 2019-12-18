@@ -13,14 +13,14 @@
                 <b-col cols="12" lg="4" v-for="(article,index) in latest_articles" :key="`latest-article-${index}`">
                     <div class="single-blog">
                         <div class="blog-image">
-                            <a href="#">
+                            <a @click="resolveArticleDetail(article)">
                                 <img :src="article.thumbnail" alt="blog 1">
                             </a>
                             <p :class="dateClass(index)">{{ toDate2Digit(article.updated_at) }}<span>{{ toMonthShort(article.updated_at)}}</span>
                             </p>
                         </div>
                         <div class="blog-text">
-                            <a href="#">
+                            <a @click="resolveArticleDetail(article)">
                                 <h3>{{ article.title }}</h3>
                             </a>
                         </div>
@@ -49,6 +49,10 @@
         },
         mixins: [dateFormatMixin],
         methods: {
+            resolveArticleDetail(article){
+                this.$store.commit('event/selectArticle',article);
+                this.$router.push({ name: 'ArticleDetail', params:{...this.$route.params, aSlug: article.slug }, props:{article}})
+            },
             dateClass(index) {
                 return `date-bg-${index % 2 === 0 ? 1 : 2}`
             },

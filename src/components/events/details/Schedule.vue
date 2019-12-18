@@ -1,64 +1,63 @@
 <template>
-    <div>
-        <section class="evlis-schedule-area section_70" data-scroll-index="3">
-            <div class="schedule_bg">
-                <img src="../../../assets/img/choos_bg.png" alt="schedule bg">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="site-heading">
-                            <h4>at a Glance</h4>
-                            <h2>Event schedule</h2>
-                            <p>Consectetur adipisicing elit sed do eiusmod, tempor incididunt labore dolore magna aliqua
-                                enim minim veniam quista nostrud exion.</p>
-                        </div>
+
+    <section class="evlis-schedule-area section_70" data-scroll-index="3" v-if="channelSessions.length">
+        <div class="schedule_bg">
+            <img src="../../../assets/img/choos_bg.png" alt="schedule bg">
+        </div>
+        <b-container>
+            <b-row>
+                <b-col cols="12">
+                    <div class="site-heading">
+                        <h4>at a Glance</h4>
+                        <h2>Event schedule</h2>
+                        <p>Consectetur adipisicing elit sed do eiusmod, tempor incididunt labore dolore magna aliqua
+                            enim minim veniam quista nostrud exion.</p>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="offer-tabs">
-                            <template v-if="channelSessions.length > 0">
-                                <ul id="offerTab">
-                                    <li :class="{ active : channel.id === selectChannel }"
-                                        :key="channel.id"
-                                        class="nav-item"
-                                        v-for="channel in channels">
-                                        <a @click="changeSelectChannel(channel.id)" class="nav-link">Channel <span>{{ channel.name }}</span></a>
-                                    </li>
-                                </ul>
-                                <transition tag="div" class="session-list" name="slide-fade">
-                                    <div class="row">
-                                        <div class="col-md-6" v-for="session in channelSessions"
-                                             :key="`session-${session.id}`">
-                                            <div class="single-schedule-item">
-                                                <div class="overlay-ribbon">
-                                                    <div class="ribbon-content">{{ currencyFormat(session.cost) }}</div>
-                                                </div>
-                                                <div class="schedule-time">
-                                                    <h3>{{resolveStartEndTime(session.start,session.end)}}</h3>
-                                                </div>
-                                                <div class="schedule-details">
-                                                    <a href="#">
-                                                        <h3>{{ session.title }} - {{ session.type }}</h3>
-                                                    </a>
-                                                    <p>{{ session.description }}</p>
-                                                </div>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col cols="12">
+                    <div class="offer-tabs">
+                        <template v-if="channelSessions.length > 0">
+                            <ul id="offerTab">
+                                <li :class="{ active : channel.id === selectChannel }"
+                                    :key="channel.id"
+                                    class="nav-item"
+                                    v-for="channel in channels">
+                                    <a @click="changeSelectChannel(channel.id)" class="nav-link">Channel <span>{{ channel.name }}</span></a>
+                                </li>
+                            </ul>
+                            <transition tag="div" class="session-list" name="slide-fade">
+                                <div class="row">
+                                    <div class="col-md-6" v-for="session in channelSessions"
+                                         :key="`session-${session.id}`">
+                                        <div class="single-schedule-item">
+                                            <div class="overlay-ribbon">
+                                                <div class="ribbon-content">{{ currencyFormat(session.cost) }}</div>
+                                            </div>
+                                            <div class="schedule-time">
+                                                <h3>{{resolveStartEndTime(session.start,session.end)}}</h3>
+                                            </div>
+                                            <div class="schedule-details">
+                                                <a href="#">
+                                                    <h3>{{ session.title }} - {{ session.type }}</h3>
+                                                </a>
+                                                <p>{{ session.description }}</p>
                                             </div>
                                         </div>
                                     </div>
-                                </transition>
-                            </template>
-                            <template v-else>
-                                <p class="pb-3 pt-3 text-center">Current is no session</p>
-                            </template>
-                        </div>
+                                </div>
+                            </transition>
+                        </template>
+                        <template v-else>
+                            <p class="pb-3 pt-3 text-center">Current is no session</p>
+                        </template>
                     </div>
-                </div>
-            </div>
-        </section>
+                </b-col>
+            </b-row>
+        </b-container>
+    </section>
 
-    </div>
 </template>
 
 <script>
