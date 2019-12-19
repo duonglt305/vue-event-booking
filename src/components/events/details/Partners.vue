@@ -18,7 +18,7 @@
                                 <img class="partner-logo" :src="partner.logo" alt="">
                                 <div class="partner-info">
                                     <h4 class="text-uppercase">{{ partner.name }}</h4>
-                                    <p>{{ partner.description }}</p>
+                                    <p class="partner-desc">{{ partner.description }}</p>
                                 </div>
                             </div>
                         </slide>
@@ -58,6 +58,10 @@
     .partner-info {
         text-align: center;
         max-width: 400px;
+    }
+
+    .partner-desc {
+        font-weight: 300;
     }
 
 

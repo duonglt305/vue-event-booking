@@ -64,7 +64,7 @@
             </div>
             <template v-slot:footer>
                 <div class="form-group text-right">
-                    <b-button variant="success" @click="purchase" :disabled="!ticketId">Purchase</b-button>
+                    <b-button variant="success" class="mr-2" @click="purchase" :disabled="!ticketId">Purchase</b-button>
                     <b-button variant="danger" @click="$router.go(-1)">Cancel</b-button>
                 </div>
             </template>

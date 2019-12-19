@@ -3,12 +3,12 @@
         <b-card class="p-md-4">
             <div class="payment-header">
                 <div class="payment-info">
-                    <h4>{{ event.name ? event.name : '' }}</h4>
-                    <p><i class="fa fa-map-marker"/> {{ registration.event.address }}</p>
-                    <p><i class="fa fa-calendar"/> {{ eventDate }} {{ eventTime }}</p>
+                    <h4>{{ event ? event.name : '' }}</h4>
+                    <p><i class="fa fa-map-marker"/> {{ event ? event.address : '' }}</p>
+                    <p><i class="fa fa-calendar"/> {{ event ? eventDate : '' }} {{ event ? eventTime : '' }}</p>
                 </div>
                 <span class="kt-badge kt-badge--inline kt-badge--pill"
-                      :class="paymentStatus">{{ registration.status }}</span>
+                      :class="paymentStatus">{{  registration ? registration.status : '' }}</span>
             </div>
             <h5 class="mt-5 mb-2">Payment detail:</h5>
             <div class="table-responsive">
@@ -22,9 +22,9 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Ticket: {{ ticket.name }}</td>
+                        <td>Ticket: {{ ticket ? ticket.name : '' }}</td>
                         <td class="text-center">1</td>
-                        <td class="text-right">{{ currencyFormat(ticket.cost) }}</td>
+                        <td class="text-right">{{ ticket ? currencyFormat(ticket.cost) : 0 }}</td>
                     </tr>
                     <tr v-for="session in sessions" :key="`session-executePayment-${session.id}`">
                         <td>Session: {{ session.title }}</td>
@@ -40,7 +40,8 @@
             </div>
             <template v-slot:footer>
                 <div class="text-center text-md-right">
-                    <b-button variant="primary" @click="confirmPayment" v-if="!paid">Confirm Payment</b-button>
+                    <b-button variant="primary" class="mr-2" @click="confirmPayment" v-if="!paid">Confirm Payment
+                    </b-button>
                     <b-button variant="danger" @click="cancel">Cancel</b-button>
                 </div>
             </template>
@@ -96,7 +97,7 @@
             }),
 
             paid() {
-                return this.registration.status.trim().toLowerCase() === 'paid';
+                return this.registration.status ? this.registration.status.trim().toLowerCase() === 'paid' : false;
             },
             paymentStatus() {
                 return this.paid ? 'kt-badge--success' : 'kt-badge--primary';
@@ -118,10 +119,10 @@
             },
 
             total() {
-                return this.sessions.reduce((total, current) => {
+                return this.sessions ? this.sessions.reduce((total, current) => {
                     total += current.cost;
                     return total;
-                }, 0) + this.ticket.cost;
+                }, 0) + this.ticket.cost : 0;
             },
         },
         methods: {

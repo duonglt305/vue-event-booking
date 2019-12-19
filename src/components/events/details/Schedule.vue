@@ -35,14 +35,15 @@
                                             <div class="overlay-ribbon">
                                                 <div class="ribbon-content">{{ currencyFormat(session.cost) }}</div>
                                             </div>
-                                            <div class="schedule-time">
-                                                <h3>{{resolveStartEndTime(session.start,session.end)}}</h3>
-                                            </div>
                                             <div class="schedule-details">
                                                 <a href="#">
-                                                    <h3>{{ session.title }} - {{ session.type }}</h3>
+                                                    <h5>{{ session.title }} - {{ session.type }}</h5>
                                                 </a>
-                                                <p>{{ session.description }}</p>
+
+                                                <div class="schedule-time">
+                                                    <p>{{resolveStartEndTime(session.start,session.end)}}</p>
+                                                </div>
+                                                <p class="session-desc">{{ session.description }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -146,11 +147,16 @@
         max-height: 600px;
         overflow-y: auto;
         overflow-x: hidden;
-    }
 
-    .single-schedule-item {
-        position: relative;
-        padding: 20px;
+        .single-schedule-item {
+            position: relative;
+            padding: 5px;
+            .session-desc{
+                font-weight: 200;
+            }
+
+        }
+
     }
 
     .overlay-ribbon {

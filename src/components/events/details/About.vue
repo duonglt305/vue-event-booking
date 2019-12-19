@@ -29,7 +29,6 @@
             },
         },
         computed: {
-
             ...mapState({
                 event: state => state.event.event,
             }),

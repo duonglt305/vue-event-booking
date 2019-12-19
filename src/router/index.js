@@ -89,6 +89,11 @@ const router = new Router({
             component: () => import(/* webpackChunkName: "registration" */ '../views/events/Registration'),
         },
         {
+            path: '/:oSlug/:eSlug/schedules',
+            name: 'Schedules',
+            component: () => import(/* webpackChunkName: "schedule" */ '../views/events/Schedules'),
+        },
+        {
             path: '/:oSlug/:eSlug/review',
             name: 'ReviewPayment',
             component: () => import(/* webpackChunkName: "review-payment" */ '../views/events/ReviewPayment'),

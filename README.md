@@ -1,18 +1,18 @@
-# evlis
+# Event Booking Platform based the Vuejs Framework
 
 ## Project setup
 ```
-yarn install
+yarn install | npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+yarn serve | npm run serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+yarn build | npm run build
 ```
 
 ### Customize configuration
