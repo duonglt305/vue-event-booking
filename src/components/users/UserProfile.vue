@@ -1,7 +1,7 @@
 <template>
     <b-card class="card-profile">
-        <div class="user-profile">
-            <img :src="user.photo" alt="profile-photo">
+        <div class="user-profile" v-lazy-container="{ selector: 'img', loading: speakerLoading, }">
+            <img :data-src="user.photo" alt="profile-photo">
         </div>
         <div class="profile-body">
             <div class="profile-content">
@@ -50,11 +50,17 @@
 <script>
     import QrCode from "@chenfengyuan/vue-qrcode";
     import {mapState} from "vuex";
+    import common from "../../utils/common";
 
     export default {
         name: "Profile",
         components: {
             QrCode,
+        },
+        data() {
+            return {
+                speakerLoading: common.speakerLoading,
+            }
         },
         computed: {
             ...mapState({

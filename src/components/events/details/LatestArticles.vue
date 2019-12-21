@@ -12,9 +12,9 @@
             <b-row>
                 <b-col cols="12" lg="4" v-for="(article,index) in latest_articles" :key="`latest-article-${index}`">
                     <div class="single-blog">
-                        <div class="blog-image">
+                        <div class="blog-image" v-lazy-container="{ selector:'img', loading: articleLoading}">
                             <a @click="resolveArticleDetail(article)">
-                                <img :src="article.thumbnail" alt="blog 1">
+                                <img :data-src="article.thumbnail" alt="article">
                             </a>
                             <p :class="dateClass(index)">{{ toDate2Digit(article.updated_at) }}<span>{{ toMonthShort(article.updated_at)}}</span>
                             </p>
@@ -38,6 +38,7 @@
 
 <script>
     import dateFormatMixin from "../../../mixins/dateFormatMixin";
+    import common from "../../../utils/common";
 
     export default {
         name: "LatestArticles",
@@ -47,11 +48,20 @@
                 default: () => [],
             }
         },
+        data() {
+            return {
+                articleLoading: common.articleLoading,
+            }
+        },
         mixins: [dateFormatMixin],
         methods: {
-            resolveArticleDetail(article){
-                this.$store.commit('event/selectArticle',article);
-                this.$router.push({ name: 'ArticleDetail', params:{...this.$route.params, aSlug: article.slug }, props:{article}})
+            resolveArticleDetail(article) {
+                this.$store.commit('event/selectArticle', article);
+                this.$router.push({
+                    name: 'ArticleDetail',
+                    params: {...this.$route.params, aSlug: article.slug},
+                    props: {article}
+                })
             },
             dateClass(index) {
                 return `date-bg-${index % 2 === 0 ? 1 : 2}`

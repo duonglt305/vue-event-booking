@@ -1,7 +1,7 @@
 <template>
     <div class="event-box">
         <div class="event-image">
-            <b-img-lazy :src="event.thumbnail" alt="event"/>
+            <img v-lazy="event.thumbnail" alt="event"/>
             <p :class="dateClass">{{ date }}</p>
         </div>
         <div class="event-text">
@@ -22,9 +22,11 @@
 <script>
     import dateFormatMixin from "../../mixins/dateFormatMixin";
     import {mapState} from "vuex";
+    import {ContentLoader} from 'vue-content-loader'
 
     export default {
         name: "Event",
+        components: {ContentLoader},
         props: {
             event: {
                 type: Object,
@@ -77,6 +79,7 @@
 </script>
 
 <style scoped>
+
     .event-text {
         padding: 20px;
         background: #fff none repeat scroll 0 0;
@@ -130,6 +133,7 @@
     .event-box {
         margin-top: 30px;
         /*box-shadow: 0 0 5px 0 rgba(1, 1, 1, 0.2);*/
+        background-color: #fff;
         border-radius: 5px;
         overflow: hidden;
         transition: box-shadow 0.4s;

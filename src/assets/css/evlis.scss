@@ -14,6 +14,28 @@
     font-size: 14px;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #999;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+
 body {
     background-color: #eeeef4;
     overflow-x: hidden;
@@ -310,6 +332,15 @@ img {
     padding: 8px 18px;
     text-transform: uppercase;
     border: 2px solid var(--main);
+
+    &.btn-second {
+        color: var(--second);
+        border-color: var(--second);
+        background: transparent;
+         &:hover{
+             background-color: var(--second);
+         }
+    }
 
     &:hover {
         background-color: var(--main);

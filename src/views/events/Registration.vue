@@ -1,7 +1,7 @@
 <template>
     <main class="container">
         <b-card class="registration">
-            <div class="pl-3 pr-3 pt-3 pb-3">
+            <div>
                 <div class="d-md-flex justify-content-between align-items-start">
                     <div class="info">
                         <h2 class="event-name">{{ event ? event.name : '' }}</h2>
@@ -29,7 +29,7 @@
                 </div>
             </b-row>
             <template v-if="sessionsPremium.length > 0">
-                <h4 class="mt-3">Select addition workshop you want to book:</h4>
+                <h5 class="mt-3">Select addition workshop you want to book:</h5>
                 <ul class="additional-sessions">
                     <li class="session-item" v-for="session in sessionsPremium" :key="session.id">
                         <b-checkbox :value="session.id" v-model="selectedSessionPremiumIds">
@@ -74,6 +74,7 @@
 
 <style scoped lang="scss">
     .registration {
+        padding: 30px 20px;
         .event-name {
             margin-bottom: 1.1rem;
         }
@@ -106,15 +107,23 @@
             transition: 0.3s box-shadow ease;
             color: #fff;
             cursor: pointer;
-            max-width: 250px;
+            max-width: 200px;
 
             .price-head {
                 position: relative;
                 border-bottom: none;
+                h2{
+                    font-size: 1.5rem;
+                    span{
+                        font-size: 0.9rem;
+                    }
+                }
             }
 
             .price-body {
                 padding: 1rem 1.35rem;
+                font-weight: 300;
+                font-size: 0.85rem;
             }
 
             &:hover {
@@ -152,6 +161,7 @@
     import {mapState} from 'vuex'
     import Checkbox from 'vue-material-checkbox'
     import currencyFormatMixin from "../../mixins/currencyFormatMixin";
+    import sessionMixin from "../../mixins/sessionMixin";
 
 
     export default {
@@ -167,7 +177,7 @@
                 selectSessions: []
             }
         },
-        mixins: [dateFormatMixin, currencyFormatMixin],
+        mixins: [dateFormatMixin, currencyFormatMixin, sessionMixin],
         computed: {
             ...mapState({
                 event: state => state.event.event
@@ -237,21 +247,6 @@
                 };
                 this.$store.dispatch('event/purchase', data);
             },
-            getSessionByChannel(channel) {
-                if (channel && channel.rooms) {
-                    return channel.rooms.reduce((result, room) => {
-                        let sessions = room.sessions;
-                        let newSessions = sessions.map(session => {
-                            return {
-                                ...session,
-                                room: room.name
-                            }
-                        });
-                        return [...result, ...newSessions];
-                    }, [])
-                }
-                return [];
-            }
         },
         components: {
             Checkbox

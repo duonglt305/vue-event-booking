@@ -18,6 +18,9 @@
             Header,
             Footer
         },
+        created() {
+            document.cookie = 'SameSite=None; Secure'
+        },
         watch: {
             $route(from, to) {
                 this.$store.dispatch('alert/clear');
@@ -27,7 +30,7 @@
 </script>
 <style scoped lang="scss">
     #app {
-        width: 100%;
+        width: calc(100vw - 5px);
         height: 100%;
     }
 </style>

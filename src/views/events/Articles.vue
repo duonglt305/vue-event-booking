@@ -4,13 +4,11 @@
             <b-row>
                 <b-col cols="12" lg="4" v-for="(article,index) in articles" :key="`article-${index}`">
                     <div class="single-blog">
-                        <div class="blog-image">
-                            <a href="" @click.prevent="resolveArticleDetail(article)">
-                                <img :src="article.thumbnail" alt="blog 1">
+                        <div class="blog-image" v-lazy-container="{ selector:'img', loading: articleLoading}">
+                            <a @click="resolveArticleDetail(article)">
+                                <img :data-src="article.thumbnail" alt="article">
                             </a>
-                            <p :class="dateClass(index)">
-                                {{ article.updated_at ? toDate2Digit(article.updated_at) : '' }}
-                                <span>{{ toMonthShort(article.updated_at)}}</span>
+                            <p :class="dateClass(index)">{{ toDate2Digit(article.updated_at) }}<span>{{ toMonthShort(article.updated_at)}}</span>
                             </p>
                         </div>
                         <div class="blog-text">
@@ -38,9 +36,15 @@
 
 <script>
     import {mapState} from "vuex";
+    import common from "../../utils/common";
 
     export default {
         name: "Articles",
+        data() {
+            return {
+                articleLoading: common.articleLoading,
+            }
+        },
         created() {
             if (!this.$route.params.oSlug || !this.$route.params.eSlug) this.$router.back();
             if (!this.articles.length)
@@ -82,9 +86,13 @@
                     page,
                 });
             },
-            resolveArticleDetail(article){
-                this.$store.commit('event/selectArticle',article);
-                this.$router.push({ name: 'ArticleDetail', params:{...this.$route.params, aSlug: article.slug }, props:{article}})
+            resolveArticleDetail(article) {
+                this.$store.commit('event/selectArticle', article);
+                this.$router.push({
+                    name: 'ArticleDetail',
+                    params: {...this.$route.params, aSlug: article.slug},
+                    props: {article}
+                })
             },
         }
     }

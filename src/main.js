@@ -12,9 +12,16 @@ import Loading from 'vue-loading-overlay'
 import VueCarousel from 'vue-carousel';
 import ReadMore from 'vue-read-more';
 import VueToast from "vue-toastr";
+import VueLazyload from "vue-lazyload";
+import common from "./utils/common";
 
 Vue.use(VueToast, {
     defaultProgressBar: false,
+});
+Vue.use(VueLazyload, {
+    attempt: 1,
+    loading: common.loadingImage,
+    listenEvents: ['scroll']
 });
 Vue.use(ReadMore);
 Vue.component('form-group', FormGroup);

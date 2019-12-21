@@ -1,0 +1,23 @@
+<svg viewBox="0 0 280 168" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="xMidYMid meet">
+    <rect clip-path="url(#ebe6l0c1cs8)" x="0" y="0" width="280" height="168"
+          style="fill: url(#v1oshhtbawj);"/>
+    <defs>
+        <clipPath id="ebe6l0c1cs8">
+            <rect x="0" y="0" rx="0" ry="0" width="280" height="168"/>
+        </clipPath>
+        <linearGradient id="v1oshhtbawj">
+            <stop offset="0.337628" stop-color="#f3f3f3" stop-opacity="1">
+                <animate attributeName="offset" values="-2; 1" dur="2s"
+                         repeatCount="indefinite"/>
+            </stop>
+            <stop offset="0.837628" stop-color="#ecebeb" stop-opacity="1">
+                <animate attributeName="offset" values="-1.5; 1.5" dur="2s"
+                         repeatCount="indefinite"/>
+            </stop>
+            <stop offset="1.33763" stop-color="#f3f3f3" stop-opacity="1">
+                <animate attributeName="offset" values="-1; 2" dur="2s"
+                         repeatCount="indefinite"/>
+            </stop>
+        </linearGradient>
+    </defs>
+</svg>

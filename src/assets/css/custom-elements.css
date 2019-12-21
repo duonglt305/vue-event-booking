@@ -28,58 +28,11 @@
 
 .toast > .toast-message {
     font-size: .85rem;
-    font-weight: 200;
+    font-weight: 300;
     line-height: .85rem;
     color: #fff;
 }
 
-.toast.toast-success {
-    background-color: #0abb87;
-    color: #fff;
-    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1);
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1)
-}
-
-.toast.toast-success:hover {
-    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .125);
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .125)
-}
-
-.toast.toast-warning {
-    background-color: #ffb822;
-    color: #111;
-    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1);
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1)
-}
-
-.toast.toast-warning:hover {
-    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .125);
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .125)
-}
-
-.toast.toast-info {
-    background-color: #5578eb;
-    color: #fff;
-    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1);
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1)
-}
-
-.toast.toast-info:hover {
-    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .125);
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .125)
-}
-
-.toast.toast-error {
-    background-color: #fd397a;
-    color: #fff;
-    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1);
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1)
-}
-
-.toast.toast-error :hover {
-    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .125);
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .125)
-}
 
 /* BUTTON */
 

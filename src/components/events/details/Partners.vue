@@ -15,7 +15,7 @@
                               :per-page-custom="[[320,1], [768,2], [991,3]]">
                         <slide v-for="partner in partners" :key="partner.id">
                             <div class="partner-item">
-                                <img class="partner-logo" :src="partner.logo" alt="">
+                                <img class="partner-logo" v-lazy="partner.logo" alt="partner-logo">
                                 <div class="partner-info">
                                     <h4 class="text-uppercase">{{ partner.name }}</h4>
                                     <p class="partner-desc">{{ partner.description }}</p>

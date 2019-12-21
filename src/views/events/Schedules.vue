@@ -53,6 +53,7 @@
 <style scoped lang="scss">
     .schedule {
         overflow-x: auto;
+        border: 1px solid red;
 
         .schedule-body {
             min-width: 991px;
@@ -96,6 +97,7 @@
 
             .channel-detail {
                 width: 10%;
+                text-align: center;
             }
 
             .rooms {
@@ -105,7 +107,7 @@
                 .room {
                     display: flex;
                     align-items: center;
-                    border-bottom: 1px solid #0f9af0;
+                    /*border-bottom: 1px solid #0f9af0;*/
 
                     &:last-child {
                         border-bottom: none;
@@ -132,7 +134,9 @@
                             padding: 5px 0;
                             border: 1px solid greenyellow;
                             font-size: 0.8rem;
-
+                            user-select: none;
+                            cursor: pointer;
+                            border-radius: 5px;
                         }
                     }
                 }
@@ -225,7 +229,8 @@
     export default {
         name: "Schedules",
         created() {
-            this.$store.dispatch('event/detail', this.$route.params);
+            if (!this.event.name)
+                this.$store.dispatch('event/detail', this.$route.params);
         },
         mixins: [dateFormatMixin],
         computed: {

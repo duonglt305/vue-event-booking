@@ -12,8 +12,9 @@
             <div class="row justify-content-center" v-for="group in speakerGroups">
                 <div class="col-lg-3 col-sm-6" v-for="speaker in group">
                     <div class="single-speakers">
-                        <div class="speakers-image">
-                            <img :src="speaker.photo" :alt="`speakers ${speaker.id}`">
+                        <div class="speakers-image"
+                             v-lazy-container="{ selector: 'img', loading: speakerLoading }">
+                            <img :data-src="speaker.photo" :alt="`speakers-${speaker.id}`">
                         </div>
                         <div class="speakers-info">
                             <a href="#">
@@ -29,12 +30,20 @@
 </template>
 
 <script>
+
+    import common from "../../../utils/common";
+
     export default {
         name: "Speakers",
         props: {
             speakers: {
                 type: Array,
                 default: () => []
+            }
+        },
+        data() {
+            return {
+                speakerLoading: common.speakerLoading,
             }
         },
         computed: {

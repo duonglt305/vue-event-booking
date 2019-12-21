@@ -18,7 +18,7 @@
             <b-row>
                 <b-col cols="12">
                     <div class="offer-tabs">
-                        <template v-if="channelSessions.length > 0">
+                        <template>
                             <ul id="offerTab">
                                 <li :class="{ active : channel.id === selectChannel }"
                                     :key="channel.id"
@@ -39,7 +39,6 @@
                                                 <a href="#">
                                                     <h5>{{ session.title }} - {{ session.type }}</h5>
                                                 </a>
-
                                                 <div class="schedule-time">
                                                     <p>{{resolveStartEndTime(session.start,session.end)}}</p>
                                                 </div>
@@ -49,9 +48,10 @@
                                     </div>
                                 </div>
                             </transition>
-                        </template>
-                        <template v-else>
-                            <p class="pb-3 pt-3 text-center">Current is no session</p>
+                            <div class="mt-5 text-center">
+                                <button @click="resolveScheduleDetail" class="btn-registration btn-second">View Detail
+                                </button>
+                            </div>
                         </template>
                     </div>
                 </b-col>
@@ -66,6 +66,7 @@
     import {mapState} from 'vuex';
     import moment from 'moment';
     import currencyFormatMixin from "../../../mixins/currencyFormatMixin";
+    import sessionMixin from "../../../mixins/sessionMixin";
 
     export default {
         name: "Schedule",
@@ -74,7 +75,7 @@
                 selectedChannel: null,
             }
         },
-        mixins: [dateFormatMixin, currencyFormatMixin],
+        mixins: [dateFormatMixin, currencyFormatMixin, sessionMixin],
         computed: {
             ...mapState({
                 event: state => state.event.event,
@@ -115,29 +116,22 @@
             }
         },
         methods: {
+            resolveScheduleDetail() {
+                this.$router.push({
+                    name: 'Schedules',
+                    params: {
+                        oSlug: this.event.organizer.slug,
+                        eSlug: this.event.slug,
+                    }
+                });
+            },
             changeSelectChannel(id) {
                 this.selectedChannel = id;
             },
             resolveStartEndTime(start, end) {
                 return `${moment(start).format('H:mm')} - ${moment(end).format('H:mm')}`;
             },
-            getSessionByChannel(channel) {
-                if (channel && channel.rooms) {
-                    return channel.rooms.reduce((result, room) => {
-                        let sessions = room.sessions;
-                        let newSessions = sessions.map(session => {
-                            return {
-                                ...session,
-                                room: room.name
-                            }
-                        });
-                        return [...result, ...newSessions];
-                    }, [])
-                }
-                return [];
-            }
         }
-
     }
 </script>
 
@@ -151,7 +145,8 @@
         .single-schedule-item {
             position: relative;
             padding: 5px;
-            .session-desc{
+
+            .session-desc {
                 font-weight: 200;
             }
 
@@ -164,11 +159,12 @@
         width: 3em;
         height: 3em;
         z-index: 500;
-        top: -5px;
+        top: 10px;
         right: 2%;
         background: var(--main);
         padding: 5px 0;
-        border-radius: 8px;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
 
         &:after {
             content: "";
@@ -177,9 +173,8 @@
             right: 0;
             width: 0;
             height: 0;
-            border-top: 3em solid var(--main);
-            border-left: 3em solid transparent;
-            z-index: 998;
+            border-top: 2em solid var(--main);
+            border-left: 2em solid transparent;
         }
 
         &:before {
