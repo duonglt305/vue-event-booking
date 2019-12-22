@@ -16,8 +16,10 @@ export default {
             }).format(d);
         },
         parseTime(date) {
-            let d = new Date(Date.parse(date));
-            return `${d.getHours()}:${d.getMinutes()}`;
+            let d = new Date(Date.parse(date)); return new Intl.DateTimeFormat('en-US', {
+                hour: '2-digit',
+                minute: '2-digit'
+            }).format(d);
         }
     }
 }

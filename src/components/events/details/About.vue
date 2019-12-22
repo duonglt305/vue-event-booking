@@ -5,7 +5,8 @@
                 <b-col cols="12">
                     <div class="about-box">
                         <h4>About the Event!</h4>
-                        <div class="about-content" v-html="description"/>
+                        <read-more  class="about-content" more-str="Read more..." :text="description" link="#" less-str="Read less" :max-chars="1000"/>
+<!--                        <div v-html="description"/>-->
                         <router-link :to="registrationLink" href="#" class="btn-registration">
                             Register Now!
                         </router-link>

@@ -11,7 +11,7 @@
             </div>
             <b-row>
                 <b-col cols="12">
-                    <carousel :autoplay="true" :mouseDrag="true" :loop="true" :per-page="5"
+                    <carousel  :autoplay="true" :mouseDrag="true" :loop="true" :per-page="5"
                               :per-page-custom="[[320,1], [768,2], [991,3]]">
                         <slide v-for="partner in partners" :key="partner.id">
                             <div class="partner-item">

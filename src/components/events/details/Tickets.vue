@@ -41,6 +41,9 @@
 </script>
 
 <style scoped>
+    .single-price-box{
+        max-width: 250px;
+    }
     .ticket-list {
         display: flex;
         justify-content: space-between;

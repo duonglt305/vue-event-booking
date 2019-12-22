@@ -33,7 +33,8 @@
                                             {{ room.name }}
                                         </div>
                                         <div class="sessions">
-                                            <div class="session-item" tooltip="I'm up above it!"
+                                            <div class="session-item"
+                                                 @click="sessionDetail(session)"
                                                  :style="resolveStyleSession(session)"
                                                  v-for="session in room.sessions">
                                                 {{ session.title }}
@@ -47,12 +48,36 @@
                 </div>
             </div>
         </b-card>
+        <b-modal id="session_detail" hide-header>
+            <template v-if="selectedSession">
+                <h4 class="session-title">{{ selectedSession.title }}</h4>
+                <p class="session-desc">{{ selectedSession.description }}</p>
+                <b-row class="justify-content-between">
+                    <b-col cols="4">
+                        <p class="ss-detail-item">Speaker: </p>
+                        <p class="ss-detail-item">Start: </p>
+                        <p class="ss-detail-item">End: </p>
+                        <p class="ss-detail-item">Cost: </p>
+                    </b-col>
+                    <b-col cols="6">
+                        <p>{{ speakerFullName }}</p>
+                        <p>{{ startTime }}</p>
+                        <p>{{ endTime }}</p>
+                        <p>{{ sessionCost }}</p>
+                    </b-col>
+                </b-row>
+            </template>
+            <template v-slot:modal-footer>
+                <b-button size="sm" variant="danger" @click="$bvModal.hide('session_detail')">Close</b-button>
+            </template>
+        </b-modal>
     </main>
 </template>
 
 <style scoped lang="scss">
     .schedule {
         overflow-x: auto;
+        overflow-y: hidden;
         border: 1px solid red;
 
         .schedule-body {
@@ -60,6 +85,7 @@
 
             .schedule-container {
                 overflow-y: auto;
+                overflow-x: hidden;
             }
 
             .body {
@@ -80,7 +106,7 @@
                 &:before {
                     position: absolute;
                     bottom: -5px;
-                    left: 2px;
+                    left: 0;
                     content: '';
                     width: 2px;
                     height: 5px;
@@ -95,6 +121,10 @@
             align-items: center;
             border-bottom: 1px solid red;
 
+            &:last-child {
+                border-bottom: none;
+            }
+
             .channel-detail {
                 width: 10%;
                 text-align: center;
@@ -107,7 +137,6 @@
                 .room {
                     display: flex;
                     align-items: center;
-                    /*border-bottom: 1px solid #0f9af0;*/
 
                     &:last-child {
                         border-bottom: none;
@@ -115,7 +144,7 @@
 
                     .room-detail {
                         padding: 10px 0;
-                        border-right: 1px solid #0f9af0;
+                        border-right: 1px solid red;
                         text-align: center;
                         width: 11.11%;
                     }
@@ -123,7 +152,6 @@
                     .sessions {
                         position: relative;
                         height: 100%;
-                        padding: 0 5px;
                         width: calc(100% - 11.11%);
                         border-left: 1px solid red;
 
@@ -131,12 +159,15 @@
                             position: absolute;
                             transform: translateY(-50%);
                             text-align: center;
-                            padding: 5px 0;
+                            padding: 5px;
                             border: 1px solid greenyellow;
                             font-size: 0.8rem;
                             user-select: none;
                             cursor: pointer;
+                            text-overflow: ellipsis;
                             border-radius: 5px;
+                            overflow: hidden;
+                            white-space: nowrap;
                         }
                     }
                 }
@@ -145,86 +176,30 @@
 
     }
 
-    [tooltip]::before,
-    [tooltip]::after {
-        text-transform: none; /* opinion 2 */
-        font-size: .9em; /* opinion 3 */
-        line-height: 1;
-        user-select: none;
-        pointer-events: none;
-        position: absolute;
-        display: none;
-        opacity: 0;
+    #session_detail {
+        .modal-body {
+            padding: 20px;
+
+            .session-title {
+                margin-bottom: 15px;
+            }
+
+            .session-desc {
+                margin-bottom: 10px;
+                font-weight: 300;
+            }
+
+            .ss-detail-item {
+                font-weight: 500;
+            }
+        }
     }
-
-    [tooltip]::before {
-        content: '';
-        border: 5px solid transparent; /* opinion 4 */
-        z-index: 1001; /* absurdity 1 */
-    }
-
-    [tooltip]::after {
-        content: attr(tooltip); /* magic! */
-
-        /* most of the rest of this is opinion */
-        font-family: Helvetica, sans-serif;
-        text-align: center;
-
-        /*
-          Let the content set the size of the tooltips
-          but this will also keep them from being obnoxious
-          */
-        min-width: 3em;
-        max-width: 21em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding: 1ch 1.5ch;
-        border-radius: .3ch;
-        box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
-        background: #333;
-        color: #fff;
-        z-index: 1000; /* absurdity 2 */
-    }
-
-    /* Make the tooltips respond to hover */
-    [tooltip]:hover::before,
-    [tooltip]:hover::after {
-        display: block;
-    }
-
-    /* don't show empty tooltips */
-    [tooltip='']::before,
-    [tooltip='']::after {
-        display: none !important;
-    }
-
-    /* FLOW: UP */
-    [tooltip]:not([flow])::before,
-    [tooltip][flow^="up"]::before {
-        bottom: 100%;
-        border-bottom-width: 0;
-        border-top-color: #333;
-    }
-
-    [tooltip]:not([flow])::after,
-    [tooltip][flow^="up"]::after {
-        bottom: calc(100% + 5px);
-    }
-
-    [tooltip]:not([flow])::before,
-    [tooltip]:not([flow])::after,
-    [tooltip][flow^="up"]::before,
-    [tooltip][flow^="up"]::after {
-        left: 50%;
-        transform: translate(-50%, -.5em);
-    }
-
 </style>
 
 <script>
     import {mapState} from "vuex";
     import dateFormatMixin from "../../mixins/dateFormatMixin";
+    import currencyFormatMixin from "../../mixins/currencyFormatMixin";
 
     export default {
         name: "Schedules",
@@ -232,13 +207,29 @@
             if (!this.event.name)
                 this.$store.dispatch('event/detail', this.$route.params);
         },
-        mixins: [dateFormatMixin],
+        mixins: [dateFormatMixin, currencyFormatMixin],
+        data() {
+            return {
+                selectedSession: null,
+            };
+        },
         computed: {
             ...mapState({
                 event: ({event}) => event.event,
                 channels: ({event}) => event.event.channels,
             }),
-
+            speakerFullName() {
+                return this.selectedSession.speaker.firstname + ' ' + this.selectedSession.speaker.lastname;
+            },
+            startTime() {
+                return this.parseTime(this.selectedSession.start);
+            },
+            endTime() {
+                return this.parseTime(this.selectedSession.end);
+            },
+            sessionCost() {
+                return this.currencyFormat(this.selectedSession.cost);
+            },
             eventDate() {
                 return this.parseDate(this.event.date);
             },
@@ -253,6 +244,10 @@
             }
         },
         methods: {
+            sessionDetail(session) {
+                this.$bvModal.show('session_detail');
+                this.selectedSession = session;
+            },
             resolveStyleSession(session) {
                 let start = new Date(Date.parse(session.start)), end = new Date(Date.parse(session.end));
                 let length = 8 * 60;
@@ -264,9 +259,6 @@
                 }
             }
         },
-        data() {
-            return {};
-        }
     }
 </script>
 

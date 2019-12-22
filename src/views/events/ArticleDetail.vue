@@ -18,9 +18,15 @@
 
 <script>
     import {mapState} from "vuex";
+    import common from "../../utils/common";
 
     export default {
         name: "ArticleDetail",
+        data(){
+            return {
+                articleLoading: common.articleLoading
+            };
+        },
         mounted() {
             if(!this.article.title)
                 this.$store.dispatch('event/articleDetail', this.$route.params);
