@@ -9,11 +9,11 @@
                             <p class="mb-4">Events for you</p>
                             <alert/>
                             <form-group
-                                :validator="$v.verify_code"
-                                attribute="verify code"
-                                label="Your verify code"
-                                labelClass="sr-only"
-                                messageColorClass="text-danger">
+                                    :validator="$v.verify_code"
+                                    attribute="verify code"
+                                    label="Your verify code"
+                                    labelClass="sr-only"
+                                    messageColorClass="text-danger">
                                 <input class="form-control" placeholder="Your verify code" type="text"
                                        v-model="verify_code">
                             </form-group>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    import {minLength, required} from 'vuelidate/lib/validators'
+    import {minLength, required, maxLength} from 'vuelidate/lib/validators'
     import FormGroup from "../../components/forms/FormGroup"
 
     export default {
@@ -56,7 +56,8 @@
         validations: {
             verify_code: {
                 required,
-                minLength: minLength(9)
+                minLength: minLength(9),
+                maxLength: maxLength(9)
             }
         }
     }

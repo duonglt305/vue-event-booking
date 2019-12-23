@@ -35,6 +35,7 @@ Vue.use(VuelidateErrorExtractor, {
         required: 'The {attribute} field is required',
         email: 'The {attribute} must be a valid email address.',
         minLength: 'The {attribute} must be at least {min} characters.',
+        maxLength: 'The {attribute} may not be greater than {max} characters.',
         sameAs: 'The {attribute} confirmation does not match.'
     }
 });

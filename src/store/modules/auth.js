@@ -47,7 +47,6 @@ export default {
                 error => {
                     if (error.data.status === 'not_verify') {
                         commit('loginSuccessNotVerify');
-                        this._vm.$toastr.e(error.data.message);
                         router.push(`/verify/${user.username}`);
                     }
                     this._vm.$toastr.e(error.data.message);
@@ -74,7 +73,7 @@ export default {
                     dispatch('loading/hide', null, {root: true});
                     router.push('/');
                 },
-                () => {
+                error => {
                     this._vm.$toastr.e(error.data.message);
                     dispatch('loading/hide', null, {root: true});
                 }
