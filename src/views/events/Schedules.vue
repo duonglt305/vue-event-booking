@@ -33,12 +33,17 @@
                                             {{ room.name }}
                                         </div>
                                         <div class="sessions">
-                                            <div class="session-item"
-                                                 @click="sessionDetail(session)"
-                                                 :style="resolveStyleSession(session)"
-                                                 v-for="session in room.sessions">
-                                                {{ session.title }}
-                                            </div>
+                                            <template v-if="room.sessions.length">
+                                                <div class="session-item"
+                                                     @click="sessionDetail(session)"
+                                                     :style="resolveStyleSession(session)"
+                                                     v-for="session in room.sessions">
+                                                    {{ session.title }}
+                                                </div>
+                                            </template>
+                                            <template v-else>
+                                                <p class="text-center">No session</p>
+                                            </template>
                                         </div>
                                     </div>
                                 </div>
@@ -106,9 +111,9 @@
                 &:before {
                     position: absolute;
                     bottom: -5px;
-                    left: 0;
+                    left: -1px;
                     content: '';
-                    width: 2px;
+                    width: 1px;
                     height: 5px;
                     background-color: red;
                 }
@@ -153,7 +158,7 @@
                         position: relative;
                         height: 100%;
                         width: calc(100% - 11.11%);
-                        border-left: 1px solid red;
+                        /*border-left: 1px solid red;*/
 
                         .session-item {
                             position: absolute;
@@ -235,7 +240,7 @@
             },
 
             eventTime() {
-                return this.parseTime(this.event.date);
+                return this.event.date ? this.parseTime(this.event.date) : '';
             },
             channelFiltered() {
                 return this.channels ? this.channels.filter(channel => {

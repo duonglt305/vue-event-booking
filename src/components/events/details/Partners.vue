@@ -11,11 +11,12 @@
             </div>
             <b-row>
                 <b-col cols="12">
-                    <carousel  :autoplay="true" :mouseDrag="true" :loop="true" :per-page="5"
+                    <carousel :autoplay="true" :mouseDrag="true" :loop="true" :per-page="5"
                               :per-page-custom="[[320,1], [768,2], [991,3]]">
                         <slide v-for="partner in partners" :key="partner.id">
-                            <div class="partner-item">
-                                <img class="partner-logo" v-lazy="partner.logo" alt="partner-logo">
+                            <div class="partner-item"
+                                 v-lazy-container="{ selector: 'img', loading: partnerLoading}">
+                                <img class="partner-logo" :data-src="partner.logo" alt="partner-logo">
                                 <div class="partner-info">
                                     <h4 class="text-uppercase">{{ partner.name }}</h4>
                                     <p class="partner-desc">{{ partner.description }}</p>
@@ -30,6 +31,8 @@
 </template>
 
 <script>
+    import common from "../../../utils/common";
+
     export default {
         name: "Partners",
         props: {
@@ -37,6 +40,11 @@
                 type: Array,
                 default: () => []
             }
+        },
+        data() {
+            return {
+                partnerLoading: common.partnerLoading,
+            };
         }
     }
 </script>

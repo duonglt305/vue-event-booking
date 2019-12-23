@@ -18,8 +18,8 @@
             Header,
             Footer
         },
-        created() {
-            document.cookie = 'SameSite=None; Secure'
+        mounted() {
+            document.cookie = 'SameSite=None; Secure';
         },
         watch: {
             $route(from, to) {
