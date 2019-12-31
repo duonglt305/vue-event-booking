@@ -1,16 +1,24 @@
-image: node:lts
+image: tetraweb/php
 before_script:
+  - apt-get update
+  - apt-get install zip unzip
   # Setup SSH deploy keys
   - 'which ssh-agent || ( apt-get install -qq openssh-client )'
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$SSH_PRIVATE_KEY")
   - mkdir -p ~/.ssh
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  - npm install
+  - npm run build
 stages:
   - deploy
 deploy:
   stage: deploy
+  artifacts:
+    paths:
+    - dist/
   script:
-    - ssh deployer@"$SERVER" -p 2022 "cd /var/www/evlis && git reset --hard origin/master && git pull origin master && rm package-lock.json && npm install && npm run build && rm -rf ../duonglt.net/* && cp dist/* ../duonglt.net/"
+    - ssh deployer@ -p 2022 "cd /var/www/evlis && git reset --hard origin/master && git pull origin master"
+    - scp -P2022 -r dist/* deployer@"$SERVER":/var/www/duonglt.net/
   only:
     - master
