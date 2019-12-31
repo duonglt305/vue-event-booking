@@ -13,7 +13,7 @@ stages:
 deploy:
   stage: deploy
   script:
-    - ssh deployer@ -p 2022 "cd /var/www/evlis && git reset --hard origin/master && git pull origin master"
+    - ssh deployer@"$SERVER" -p 2022 "cd /var/www/evlis && git reset --hard origin/master && git pull origin master"
     - npm install
     - npm run build
     - scp -P2022 -r dist/* deployer@"$SERVER":/var/www/duonglt.net/
