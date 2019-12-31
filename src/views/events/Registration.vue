@@ -227,7 +227,7 @@
             sessionsPremium() {
                 if (this.channels !== undefined && this.channels !== null) {
                     let sessions = this.channels.map(c => this.getSessionByChannel(c));
-                    sessions = sessions.length > 0 ? sessions.reduce((current, next) => [...current, ...next]).filter(s => parseInt(s.cost) !== 0 || !isNaN(parseInt(s.cost))) : [];
+                    sessions = sessions.length > 0 ? sessions.reduce((current, next) => [...current, ...next]).filter(s => (s.cost !== null || parseInt(s.cost) !== 0)) : [];
                     return sessions;
                 }
                 return [];
