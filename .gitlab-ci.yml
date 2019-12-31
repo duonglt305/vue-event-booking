@@ -1,7 +1,6 @@
 image: tetraweb/php
 before_script:
   - apt-get update
-  - apt-get install zip unzip
   # Setup SSH deploy keys
   - 'which ssh-agent || ( apt-get install -qq openssh-client )'
   - eval $(ssh-agent -s)

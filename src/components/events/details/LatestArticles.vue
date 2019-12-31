@@ -1,5 +1,5 @@
 <template>
-    <section class="evlis-blog-area section_70">
+    <section class="evlis-blog-area section_70" v-if="latest_articles.length">
         <b-container>
             <b-row>
                 <b-col cols="12">
