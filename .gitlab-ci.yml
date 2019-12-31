@@ -12,6 +12,7 @@ stages:
 setup:
   stage: setup
   script:
+    - rm package-lock.json
     - npm install
     - npm run build
   only:
