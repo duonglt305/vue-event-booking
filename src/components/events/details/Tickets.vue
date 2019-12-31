@@ -8,6 +8,7 @@
                         <h4>{{ ticket.name }}</h4>
                         <h2>{{ currencyFormat(ticket.cost)}}<span> / person</span></h2>
                     </div>
+                    <div class="description" v-html="ticket.description"/>
                     <div class="price-body" v-html="ticket.short_description"/>
                 </div>
             </div>
@@ -40,9 +41,16 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .single-price-box{
         max-width: 250px;
+        .description{
+            padding: 10px;
+            text-align: center;
+        }
+        .price-body{
+            padding: 15px 10px;
+        }
     }
     .ticket-list {
         display: flex;

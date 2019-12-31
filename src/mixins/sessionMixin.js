@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export default {
     methods: {
         getSessionByChannel(channel) {
@@ -11,7 +13,10 @@ export default {
                         }
                     });
                     return [...result, ...newSessions];
-                }, [])
+                }, []).sort((c, n) => {
+                    let ct = moment(c.start).toDate().getTime(), nt = moment(n.start).toDate().getTime();
+                    return ct - nt;
+                })
             }
             return [];
         }

@@ -42,7 +42,6 @@
                                                 <div class="schedule-time">
                                                     <p>{{resolveStartEndTime(session.start,session.end)}}</p>
                                                 </div>
-                                                <p class="session-desc">{{ session.description }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -160,7 +159,7 @@
         height: 3em;
         z-index: 500;
         top: 10px;
-        right: 2%;
+        right: 0;
         background: var(--main);
         padding: 5px 0;
         border-top-right-radius: 8px;
