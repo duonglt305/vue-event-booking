@@ -7,18 +7,12 @@ before_script:
   - mkdir -p ~/.ssh
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 stages:
-  - setup
   - deploy
-setup:
-  stage: setup
+deploy:
+  stage: deploy
   script:
     - rm package-lock.json
     - npm install
-  only:
-    - master
-build:
-  stage: deploy
-  script:
     - npm run build
     - ssh deployer@"$SERVER" -p 2022 "cd /var/www/evlis && git reset --hard origin/master && git pull origin master"
     - scp -p 2022 -r dist/* deployer@"$SERVER":/var/www/duonglt.net/
