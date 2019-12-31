@@ -14,7 +14,7 @@ deploy:
     - rm package-lock.json
     - npm install
     - npm run build
-    - ssh deployer@"$SERVER" -p 2022 "cd /var/www/evlis && git reset --hard origin/master && git pull origin master && rm -rf ../duonglt.net/*"
+    - ssh deployer@"$SERVER" -p 2022 "cd /var/www/evlis && git reset --hard origin/master && git pull origin master"
     - scp -P2022 dist/* deloyer@"$SERVER":/var/www/duonglt.net/
   only:
     - master
