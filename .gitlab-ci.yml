@@ -8,17 +8,14 @@ before_script:
   - ssh-add <(echo "$SSH_PRIVATE_KEY")
   - mkdir -p ~/.ssh
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-  - npm install
-  - npm run build
 stages:
   - deploy
 deploy:
   stage: deploy
-  artifacts:
-    paths:
-    - dist/
   script:
     - ssh deployer@ -p 2022 "cd /var/www/evlis && git reset --hard origin/master && git pull origin master"
+    - npm install
+    - npm run build
     - scp -P2022 -r dist/* deployer@"$SERVER":/var/www/duonglt.net/
   only:
     - master
