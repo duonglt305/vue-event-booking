@@ -11,8 +11,6 @@ stages:
 deploy:
   stage: deploy
   script:
-    - ssh deployer@"$SERVER" -p 2022 "cd /var/www/evlis && git reset --hard origin/master && git pull origin master"
-    - ssh  deployer@"$SERVER" -p 2022 "cd /var/www/evlis && rm package-lock.json && npm install"
-    - ssh deployer@"$SERVER" -p 2022 "cd /var/www/evlis && npm run build && rm -rf ../duonglt.net/* && cp dist/* ../duonglt.net/"
+    - ssh deployer@"$SERVER" -p 2022 "cd /var/www/evlis && git reset --hard origin/master && git pull origin master && rm package-lock.json && npm install && npm run build && rm -rf ../duonglt.net/* && cp dist/* ../duonglt.net/"
   only:
     - master
