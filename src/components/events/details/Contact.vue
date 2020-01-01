@@ -21,18 +21,18 @@
                             <b-row>
                                 <b-col cols="12" md="6">
                                     <form-group
-                                        :validator="$v.contact.name"
-                                        attribute="name"
-                                        label="Your Full Name">
+                                            :validator="$v.contact.name"
+                                            attribute="name"
+                                            label="Your Full Name">
                                         <input type="text"
                                                class="form-control"
                                                v-model="contact.name"
                                                placeholder="Your Full Name">
                                     </form-group>
                                     <form-group
-                                        :validator="$v.contact.email"
-                                        attribute="email"
-                                        label="Your Email Address">
+                                            :validator="$v.contact.email"
+                                            attribute="email"
+                                            label="Your Email Address">
                                         <input type="email"
                                                class="form-control"
                                                v-model="contact.email"
@@ -41,9 +41,9 @@
                                 </b-col>
                                 <b-col cols="12" md="6">
                                     <form-group
-                                        :validator="$v.contact.message"
-                                        attribute="message"
-                                        label="Message">
+                                            :validator="$v.contact.message"
+                                            attribute="message"
+                                            label="Message">
                                        <textarea placeholder="Write your message here..."
                                                  class="form-control"
                                                  v-model="contact.message"
@@ -58,10 +58,10 @@
                                     </div>
                                     <div class="submit-form">
                                         <vue-recaptcha
-                                            size="invisible"
-                                            ref="recaptcha"
-                                            @verify="onVerify"
-                                            :sitekey="siteKey">
+                                                size="invisible"
+                                                ref="recaptcha"
+                                                @verify="onVerify"
+                                                :sitekey="siteKey">
                                         </vue-recaptcha>
                                         <button type="submit"><i class="fa fa-paper-plane-o"/> Send Message</button>
                                     </div>
@@ -97,8 +97,8 @@
         validations: validations,
         methods: {
             submitContact() {
-                this.$refs.recaptcha.execute();
                 this.$v.$touch();
+                this.$refs.recaptcha.execute();
             },
             onVerify(response) {
                 if (!this.$v.$invalid && response) {
@@ -109,6 +109,7 @@
                     };
                     this.$store.dispatch('event/submitContact', data);
                     this.contact = {};
+                    this.$v.$reset();
                 }
             }
         }

@@ -8,10 +8,10 @@
                             <flip-countdown :deadline="date"/>
                             <form>
                                 <p>
-                                    <input type="email" placeholder="E-mail Address"/>
+                                    <input type="email" placeholder="E-mail Address" disabled/>
                                 </p>
                                 <p>
-                                    <button type="submit">Notify me</button>
+                                    <button type="submit" disabled>Notify me</button>
                                 </p>
                             </form>
                         </div>
@@ -25,6 +25,7 @@
 <script>
     import {mapState} from "vuex";
     import FlipCountdown from 'vue2-flip-countdown'
+    import moment from "moment";
 
     export default {
         name: "CountDown",
@@ -34,7 +35,7 @@
         computed: {
             date() {
                 let date = new Date();
-                return this.event.date ? this.event.date : `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                return this.event.date ? this.event.date : moment(date).format('YYYY-MM-DD hh:mm:ss');
             },
             ...mapState({
                 event: state => state.event.event,

@@ -15,18 +15,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="item in items" :key="item.id">
-                    <td>{{ item.event }}</td>
-                    <td>{{ item.ticket }}</td>
-                    <td>{{ item.total }}</td>
-                    <td v-html="item.status"/>
-                    <td>
-                        <a class="text-primary" v-if="!item.paid" href=""
-                           @click.prevent="executePayment(item.registration)">Pay</a>
-                        <a class="text-success" v-else href=""
-                           @click.prevent="detailPayment(item.registration)">Invoice</a>
-                    </td>
-                </tr>
+                <template v-if="items.length">
+                    <tr v-for="item in items" :key="item.id">
+                        <td>{{ item.event }}</td>
+                        <td>{{ item.ticket }}</td>
+                        <td>{{ item.total }}</td>
+                        <td v-html="item.status"/>
+                        <td>
+                            <a class="text-primary" v-if="!item.paid" href=""
+                               @click.prevent="executePayment(item.registration)">Pay</a>
+                            <a class="text-success" v-else href=""
+                               @click.prevent="detailPayment(item.registration)">Invoice</a>
+                        </td>
+                    </tr>
+                </template>
+                <template v-else>
+                    <tr>
+                        <td class="text-center" colspan="6">No registration</td>
+                    </tr>
+                </template>
                 </tbody>
             </table>
         </div>

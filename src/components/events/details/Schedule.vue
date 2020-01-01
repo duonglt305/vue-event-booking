@@ -36,7 +36,7 @@
                                                 <div class="ribbon-content">{{ currencyFormat(session.cost) }}</div>
                                             </div>
                                             <div class="schedule-details">
-                                                <a href="#">
+                                                <a @click.prevent="selectSession(session)" href="#">
                                                     <h5>{{ session.title }} - {{ session.type }}</h5>
                                                 </a>
                                                 <div class="schedule-time">
@@ -55,9 +55,31 @@
                     </div>
                 </b-col>
             </b-row>
+            <b-modal id="session_detail" hide-header>
+                <template v-if="selectedSession">
+                    <h4 class="session-title">{{ selectedSession.title }}</h4>
+                    <p class="session-desc">{{ selectedSession.description }}</p>
+                    <b-row class="justify-content-between">
+                        <b-col cols="4">
+                            <p class="ss-detail-item">Speaker: </p>
+                            <p class="ss-detail-item">Start: </p>
+                            <p class="ss-detail-item">End: </p>
+                            <p class="ss-detail-item">Cost: </p>
+                        </b-col>
+                        <b-col cols="6">
+                            <p>{{ speakerFullName }}</p>
+                            <p>{{ startTime }}</p>
+                            <p>{{ endTime }}</p>
+                            <p>{{ sessionCost }}</p>
+                        </b-col>
+                    </b-row>
+                </template>
+                <template v-slot:modal-footer>
+                    <b-button size="sm" variant="danger" @click="$bvModal.hide('session_detail')">Close</b-button>
+                </template>
+            </b-modal>
         </b-container>
     </section>
-
 </template>
 
 <script>
@@ -72,6 +94,7 @@
         data() {
             return {
                 selectedChannel: null,
+                selectedSession: null,
             }
         },
         mixins: [dateFormatMixin, currencyFormatMixin, sessionMixin],
@@ -112,9 +135,26 @@
                     return !!sessions.length ? sessions : [];
                 }
                 return [];
-            }
+            },
+            speakerFullName() {
+                return this.selectedSession.speaker.firstname + ' ' + this.selectedSession.speaker.lastname;
+            },
+            startTime() {
+                return this.parseTime(this.selectedSession.start);
+            },
+            endTime() {
+                return this.parseTime(this.selectedSession.end);
+            },
+            sessionCost() {
+                return this.currencyFormat(this.selectedSession.cost);
+            },
         },
         methods: {
+            selectSession(session) {
+                this.$bvModal.show('session_detail');
+                console.log(session);
+                this.selectedSession = session;
+            },
             resolveScheduleDetail() {
                 this.$router.push({
                     name: 'Schedules',
@@ -157,7 +197,6 @@
         position: absolute;
         width: 3em;
         height: 3em;
-        z-index: 500;
         top: 10px;
         right: 0;
         background: var(--main);
@@ -185,11 +224,10 @@
             height: 0;
             border-top: 3em solid var(--main);
             border-right: 3em solid transparent;
-            z-index: 997;
+            /*z-index: 99;*/
         }
 
         .ribbon-content {
-            z-index: 500;
             position: relative;
             margin: 0 5px;
             text-align: center;
@@ -200,26 +238,38 @@
         }
     }
 
-    #offerTab {
-        .nav-item {
-            &.active .nav-link {
-                color: #fff;
-                background-color: var(--second);
-
-                span {
-                    color: #fff;
-                    border-color: #fff;
+    .offer-tabs {
+        .row {
+            .single-schedule-item {
+                .overlay-ribbon {
+                    @media screen and (max-width: 575px) {
+                        right: 5px;
+                    }
                 }
             }
+        }
 
-            .nav-link {
-                cursor: pointer;
-                color: var(--second);
-                border-color: var(--second);
+        #offerTab {
+            .nav-item {
+                &.active .nav-link {
+                    color: #fff;
+                    background-color: var(--second);
 
-                span {
-                    border-color: var(--second);
+                    span {
+                        color: #fff;
+                        border-color: #fff;
+                    }
+                }
+
+                .nav-link {
+                    cursor: pointer;
                     color: var(--second);
+                    border-color: var(--second);
+
+                    span {
+                        border-color: var(--second);
+                        color: var(--second);
+                    }
                 }
             }
         }

@@ -1,7 +1,7 @@
 <template>
     <b-card class="card-profile">
         <div class="user-profile" v-lazy-container="{ selector: 'img', loading: speakerLoading, }">
-            <img :data-src="user.photo" alt="profile-photo">
+            <img :data-src="photo" alt="profile-photo">
         </div>
         <div class="profile-body">
             <div class="profile-content">
@@ -63,6 +63,10 @@
             }
         },
         computed: {
+            photo(){
+                console.log(this.user);
+                return this.user.photo ? this.user.photo : common.defaultPhoto;
+            },
             ...mapState({
                 user: state => state.auth.user.user
             }),
