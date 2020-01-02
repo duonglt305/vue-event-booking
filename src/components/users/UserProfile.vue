@@ -64,7 +64,6 @@
         },
         computed: {
             photo(){
-                console.log(this.user);
                 return this.user.photo ? this.user.photo : common.defaultPhoto;
             },
             ...mapState({

@@ -34,7 +34,9 @@
                         <b-checkbox :value="session.id" v-model="selectedSessionPremiumIds">
                             {{ session.title }} - <i>{{ session.type }}</i>
                         </b-checkbox>
-                        <div class="">{{ session.channel }} / {{ session.room }} - {{ parseTime(session.start) }} <i class="fa fa-arrow-circle-o-right"/> {{ parseTime(session.end) }} </div>
+                        <div class="">{{ session.channel }} / {{ session.room }} - {{ parseTime(session.start) }} <i
+                                class="fa fa-arrow-circle-o-right"/> {{ parseTime(session.end) }}
+                        </div>
                         <b>{{ currencyFormat(session.cost) }}</b>
                     </li>
                 </ul>
@@ -176,6 +178,12 @@
             if (!this.event.name)
                 this.$store.dispatch('event/detail', this.$route.params);
         },
+        mounted() {
+            if (this.registered && this.registration && this.registration.status !== 'PAID')
+                this.$toastr.e('You have already registered this event but not yet payment, you can payment in your profile.');
+            else if (this.registration.status === 'PAID')
+                this.$toastr.w('You have already registered this event.');
+        },
         data() {
             return {
                 ticketId: 0,
@@ -192,6 +200,12 @@
             ...mapState({
                 event: state => state.event.event
             }),
+            registration() {
+                return this.event ? this.event.registration : null;
+            },
+            registered() {
+                return this.event && this.event.registration !== null;
+            },
             ticketCost() {
                 let ticket = this.tickets.find(ticket => ticket.id === this.ticketId);
                 return ticket ? ticket.cost : this.ticketId;

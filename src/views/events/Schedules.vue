@@ -1,7 +1,7 @@
 <template>
     <main class="container">
         <b-card class="event-schedule">
-            <div class="d-flex justify-content-between pl-3 pr-3 pt-3 pb-3 mb-4">
+            <div class="d-flex justify-content-md-between flex-md-row flex-column align-items-center pl-3 pr-3 pt-3 pb-3 mb-4">
                 <div class="">
                     <div class="d-md-flex justify-content-between align-items-start">
                         <div class="info">
@@ -9,10 +9,11 @@
                         </div>
                     </div>
                     <p class="event-desc"><i class="fa fa-map-marker"/> {{ event.address }}</p>
-                    <p class="event-desc"><i class="fa fa-calendar"/> {{ event.date ? eventDate : '' }} {{ eventTime }}</p>
+                    <p class="event-desc"><i class="fa fa-calendar"/> {{ event.date ? eventDate : '' }} {{ eventTime }}
+                    </p>
                 </div>
-                <div>
-                    <router-link :to="'/'" class="btn-registration">
+                <div class="mt-4 m-md-0">
+                    <router-link :to="registrationLink" class="btn-registration">
                         Register Now!
                     </router-link>
                 </div>
@@ -42,6 +43,7 @@
                                         <div class="sessions">
                                             <template v-if="room.sessions.length">
                                                 <div class="session-item"
+                                                     :class="resolveClassSession(session)"
                                                      @click="sessionDetail(session)"
                                                      :style="resolveStyleSession(session)"
                                                      v-for="session in room.sessions">
@@ -180,6 +182,10 @@
                             border-radius: 5px;
                             overflow: hidden;
                             white-space: nowrap;
+
+                            &.registered {
+                                border-color: #ff8a01;
+                            }
                         }
                     }
                 }
@@ -229,7 +235,14 @@
             ...mapState({
                 event: ({event}) => event.event,
                 channels: ({event}) => event.event.channels,
+                isLogged: ({auth}) => auth.status.isLogged,
             }),
+            registeredSessions() {
+                return this.event.registration ? this.event.registration.sessions : [];
+            },
+            paid() {
+                return this.event.registration ? this.event.registration.status === 'PAID' : false;
+            },
             speakerFullName() {
                 return this.selectedSession.speaker.firstname + ' ' + this.selectedSession.speaker.lastname;
             },
@@ -245,7 +258,6 @@
             eventDate() {
                 return this.parseDate(this.event.date);
             },
-
             eventTime() {
                 return this.event.date ? this.parseTime(this.event.date) : '';
             },
@@ -253,9 +265,27 @@
                 return this.channels ? this.channels.filter(channel => {
                     return channel.rooms.length;
                 }) : [];
-            }
+            },
+            registrationLink() {
+                return this.isLogged ? {
+                    name: 'Registration',
+                    params: {
+                        oSlug: this.$route.params.oSlug,
+                        eSlug: this.$route.params.eSlug,
+                    }
+                } : {name: 'Login'}
+            },
         },
         methods: {
+            resolveClassSession(session) {
+                let ssFree = !(session.cost !== null && parseInt(session.cost) !== 0);
+                let alreadyRegisteredSession = !!this.registeredSessions.find(s => s.id === session.id);
+                if (this.event.registration !== null)
+                    return {
+                        registered: (ssFree || alreadyRegisteredSession) && this.isLogged && this.paid,
+                    };
+                return {};
+            },
             sessionDetail(session) {
                 this.$bvModal.show('session_detail');
                 this.selectedSession = session;

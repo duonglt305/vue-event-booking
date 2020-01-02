@@ -5,7 +5,7 @@
                 <div class="payment-info">
                     <h4>{{ event ? event.name : '' }}</h4>
                     <p><i class="fa fa-map-marker"/> {{ event ? event.address : '' }}</p>
-                    <p><i class="fa fa-calendar"/> {{ event ? eventDate : '' }} {{ event ? eventTime : '' }}</p>
+                    <p><i class="fa fa-calendar"/> {{ eventDate }} {{ eventTime }}</p>
                 </div>
                 <span class="kt-badge kt-badge--inline kt-badge--pill"
                       :class="paymentStatus">{{  registration ? registration.status : '' }}</span>
@@ -42,7 +42,7 @@
                 <div class="text-center text-md-right">
                     <b-button variant="primary" class="mr-2" @click="confirmPayment" v-if="!paid">Confirm Payment
                     </b-button>
-                    <b-button variant="danger" @click="cancel">Cancel</b-button>
+                    <b-button variant="danger" @click="cancel">Close</b-button>
                 </div>
             </template>
         </b-card>
@@ -112,10 +112,10 @@
                 return this.registration.sessions;
             },
             eventDate() {
-                return this.event.date ? this.parseDate(this.event.date) : '';
+                return this.event && this.event.date ? this.parseDate(this.event.date) : '';
             },
             eventTime() {
-                return this.parseTime(this.event.date);
+                return this.event && this.event.date ? this.parseTime(this.event.date) : '';
             },
 
             total() {

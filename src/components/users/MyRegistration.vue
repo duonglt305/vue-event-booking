@@ -24,7 +24,8 @@
                         <td>
                             <a class="text-primary" v-if="!item.paid" href=""
                                @click.prevent="executePayment(item.registration)">Pay</a>
-                            <a class="text-success" v-else href=""
+                            &nbsp;
+                            <a class="text-success" href=""
                                @click.prevent="detailPayment(item.registration)">Invoice</a>
                         </td>
                     </tr>
