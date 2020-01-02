@@ -1,14 +1,21 @@
 <template>
     <main class="container">
         <b-card class="event-schedule">
-            <div class="pl-3 pr-3 pt-3 pb-3 mb-4">
-                <div class="d-md-flex justify-content-between align-items-start">
-                    <div class="info">
-                        <h2 class="event-name">{{ event ? event.name : '' }}</h2>
+            <div class="d-flex justify-content-between pl-3 pr-3 pt-3 pb-3 mb-4">
+                <div class="">
+                    <div class="d-md-flex justify-content-between align-items-start">
+                        <div class="info">
+                            <h2 class="event-name">{{ event ? event.name : '' }}</h2>
+                        </div>
                     </div>
+                    <p class="event-desc"><i class="fa fa-map-marker"/> {{ event.address }}</p>
+                    <p class="event-desc"><i class="fa fa-calendar"/> {{ event.date ? eventDate : '' }} {{ eventTime }}</p>
                 </div>
-                <p class="event-desc"><i class="fa fa-map-marker"/> {{ event.address }}</p>
-                <p class="event-desc"><i class="fa fa-calendar"/> {{ event.date ? eventDate : '' }} {{ eventTime }}</p>
+                <div>
+                    <router-link :to="'/'" class="btn-registration">
+                        Register Now!
+                    </router-link>
+                </div>
             </div>
             <div class="event-schedule-header mb-4">
                 <h3 class="text-center">Event Schedule</h3>

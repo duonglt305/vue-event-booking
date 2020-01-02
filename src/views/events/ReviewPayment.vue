@@ -33,7 +33,7 @@
                     </tr>
                     <tr>
                         <td><b>Total:</b></td>
-                        <td class="text-right"><b>{{ currencyFormat(total) }}</b></td>
+                        <td class="text-right" colspan="2"><b>{{ currencyFormat(total) }}</b></td>
                     </tr>
                     </tbody>
                 </table>

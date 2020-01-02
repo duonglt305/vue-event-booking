@@ -9,7 +9,8 @@ export default {
                     let newSessions = sessions.map(session => {
                         return {
                             ...session,
-                            room: room.name
+                            room: room.name,
+                            channel: channel.name
                         }
                     });
                     return [...result, ...newSessions];

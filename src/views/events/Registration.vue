@@ -8,7 +8,8 @@
                     </div>
                 </div>
                 <p class="event-desc"><i class="fa fa-map-marker"/> {{ event.address }}</p>
-                <p class="event-desc"><i class="fa fa-calendar"/> {{ event.date ? eventDate : '' }} {{ eventTime }}</p>
+                <p class="event-desc"><i class="fa fa-calendar"/> {{ event.date ? eventDate : '' }} {{ event.date ?
+                    eventTime : '' }}</p>
             </div>
             <h5 class="mt-3">Select your ticket</h5>
             <b-row class="mt-3 justify-content-center">
@@ -20,8 +21,6 @@
                         <h2>
                             {{ ticket.cost === 0 ? 'Free' : `${currencyFormat(ticket.cost)}` }}<span> / person</span>
                         </h2>
-
-
                     </div>
                     <div class="price-body" v-if="ticket.description">
                         {{ ticket.description }}
@@ -33,8 +32,9 @@
                 <ul class="additional-sessions">
                     <li class="session-item" v-for="session in sessionsPremium" :key="session.id">
                         <b-checkbox :value="session.id" v-model="selectedSessionPremiumIds">
-                            {{ session.title }}
+                            {{ session.title }} - <i>{{ session.type }}</i>
                         </b-checkbox>
+                        <div class="">{{ session.channel }} / {{ session.room }} - {{ parseTime(session.start) }} <i class="fa fa-arrow-circle-o-right"/> {{ parseTime(session.end) }} </div>
                         <b>{{ currencyFormat(session.cost) }}</b>
                     </li>
                 </ul>
@@ -75,6 +75,7 @@
 <style scoped lang="scss">
     .registration {
         padding: 30px 20px;
+
         .event-name {
             margin-bottom: 1.1rem;
         }
@@ -91,6 +92,9 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                @media screen and(max-width: 991px) {
+                    flex-direction: column;
+                }
 
                 &:hover {
                     box-shadow: 0 4px 10px rgba(14, 16, 48, .2);
@@ -112,9 +116,11 @@
             .price-head {
                 position: relative;
                 border-bottom: none;
-                h2{
+
+                h2 {
                     font-size: 1.5rem;
-                    span{
+
+                    span {
                         font-size: 0.9rem;
                     }
                 }
@@ -167,14 +173,18 @@
     export default {
         name: "Registration",
         created() {
-            if(!this.event.name)
+            if (!this.event.name)
                 this.$store.dispatch('event/detail', this.$route.params);
         },
         data() {
             return {
                 ticketId: 0,
                 selectedSessionPremiumIds: [],
-                selectSessions: []
+            }
+        },
+        watch: {
+            selectedSessionPremiumIds(newVal) {
+
             }
         },
         mixins: [dateFormatMixin, currencyFormatMixin, sessionMixin],
