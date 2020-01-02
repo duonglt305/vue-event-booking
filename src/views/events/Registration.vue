@@ -179,10 +179,13 @@
                 this.$store.dispatch('event/detail', this.$route.params);
         },
         mounted() {
-            if (this.registered && this.registration && this.registration.status !== 'PAID')
+            if (this.registered && this.registration && this.registration.status !== 'PAID') {
                 this.$toastr.e('You have already registered this event but not yet payment, you can payment in your profile.');
-            else if (this.registration && this.registration.status === 'PAID')
+                this.$router.go(-1);
+            } else if (this.registration && this.registration.status === 'PAID') {
                 this.$toastr.w('You have already registered this event.');
+                this.$router.go(-1);
+            }
         },
         data() {
             return {

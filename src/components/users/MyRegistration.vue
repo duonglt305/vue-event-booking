@@ -26,6 +26,7 @@
                                @click.prevent="executePayment(item.registration)">Pay</a>
                             &nbsp;
                             <a class="text-success" href=""
+                               v-else
                                @click.prevent="detailPayment(item.registration)">Invoice</a>
                         </td>
                     </tr>
