@@ -74,7 +74,19 @@ export default {
             data.cancel_url = `${location.origin}/${oSlug}/${eSlug}/registration`;
             purchaseEvent(oSlug, eSlug, data).then(
                 response => {
-                    location.href = response.data.url;
+                    if (response.data.url)
+                        location.href = response.data.url;
+                    else {
+                        commit('setPaymentSuccess', response.data.registration);
+                        router.push({
+                            name: 'ReviewPayment',
+                            params: {
+                                oSlug,
+                                eSlug
+                            }
+                        });
+                        dispatch('loading/hide', null, {root: true});
+                    }
                 },
                 error => {
                     this._vm.$toastr.e(error.data.message);
@@ -205,6 +217,9 @@ export default {
         },
         clearRegistration(state) {
             state.registration = {};
+        },
+        clearRegistrations(state){
+            state.registrations = [];
         }
     }
 }

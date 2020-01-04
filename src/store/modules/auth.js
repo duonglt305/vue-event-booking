@@ -57,6 +57,9 @@ export default {
             dispatch('loading/show', null, {root: true});
             logout().then(() => {
                 commit('logout');
+                commit('event/clearRegistration', null, {root: true});
+                commit('event/clearRegistrations', null, {root: true});
+                commit('event/clearEventDetail', null, {root: true});
                 dispatch('loading/hide', null, {root: true});
                 router.push('/login');
             }, () => {

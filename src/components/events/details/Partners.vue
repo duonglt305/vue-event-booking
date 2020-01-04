@@ -1,5 +1,5 @@
 <template>
-    <section class="evlis-sponsor-area section_70" data-scroll-index="5">
+    <section class="evlis-sponsor-area section_70" data-scroll-index="5" v-if="partners.length">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

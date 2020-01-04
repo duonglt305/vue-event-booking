@@ -63,8 +63,8 @@
             }
         },
         computed: {
-            photo(){
-                return this.user.photo ? this.user.photo : common.defaultPhoto;
+            photo() {
+                return this.user && this.user.photo ? this.user.photo : common.defaultPhoto;
             },
             ...mapState({
                 user: state => state.auth.user.user
